@@ -1,0 +1,3446 @@
+public class com.yteu.hfdh.c.h extends java.lang.Object
+{
+    private static int a;
+    private static final java.util.regex.Pattern b;
+    private static java.lang.Object c;
+
+    static void <clinit>()
+    {
+        java.util.regex.Pattern $r0;
+        java.lang.String $r1;
+        java.lang.Object $r2;
+
+        <com.yteu.hfdh.c.h: int a> = 0;
+
+        $r1 = <com.yteu.hfdh.c.b: java.lang.String af>;
+
+        $r0 = staticinvoke <java.util.regex.Pattern: java.util.regex.Pattern compile(java.lang.String)>($r1);
+
+        <com.yteu.hfdh.c.h: java.util.regex.Pattern b> = $r0;
+
+        $r2 = new java.lang.Object;
+
+        specialinvoke $r2.<java.lang.Object: void <init>()>();
+
+        <com.yteu.hfdh.c.h: java.lang.Object c> = $r2;
+
+        return;
+    }
+
+    public static android.content.Intent a(android.content.Context, java.io.File)
+    {
+        android.content.Context $r0;
+        java.io.File $r1;
+        android.content.Intent $r2;
+        java.lang.String $r3;
+        android.net.Uri $r4;
+
+        $r0 := @parameter0: android.content.Context;
+
+        $r1 := @parameter1: java.io.File;
+
+        $r2 = new android.content.Intent;
+
+        specialinvoke $r2.<android.content.Intent: void <init>()>();
+
+        virtualinvoke $r2.<android.content.Intent: android.content.Intent addFlags(int)>(268435456);
+
+        virtualinvoke $r2.<android.content.Intent: android.content.Intent setAction(java.lang.String)>("android.intent.action.VIEW");
+
+        $r4 = staticinvoke <android.net.Uri: android.net.Uri fromFile(java.io.File)>($r1);
+
+        $r3 = <com.yteu.hfdh.c.b: java.lang.String av>;
+
+        virtualinvoke $r2.<android.content.Intent: android.content.Intent setDataAndType(android.net.Uri,java.lang.String)>($r4, $r3);
+
+        return $r2;
+    }
+
+    public static android.content.Intent a(java.lang.String, android.content.Context)
+    {
+        java.lang.String $r0;
+        android.content.Context $r1, $r3;
+        android.content.Intent $r2;
+        android.content.pm.PackageManager $r4;
+
+        $r0 := @parameter0: java.lang.String;
+
+        $r1 := @parameter1: android.content.Context;
+
+        $r2 = new android.content.Intent;
+
+        specialinvoke $r2.<android.content.Intent: void <init>()>();
+
+        $r3 = virtualinvoke $r1.<android.content.Context: android.content.Context getApplicationContext()>();
+
+        $r4 = virtualinvoke $r3.<android.content.Context: android.content.pm.PackageManager getPackageManager()>();
+
+        $r2 = virtualinvoke $r4.<android.content.pm.PackageManager: android.content.Intent getLaunchIntentForPackage(java.lang.String)>($r0);
+
+        virtualinvoke $r2.<android.content.Intent: android.content.Intent addFlags(int)>(268435456);
+
+        virtualinvoke $r1.<android.content.Context: void startActivity(android.content.Intent)>($r2);
+
+        return $r2;
+    }
+
+    public static android.content.pm.PackageInfo a(android.content.Context, java.lang.String, int)
+    {
+        android.content.Context $r0;
+        java.lang.String $r1;
+        int $i0;
+        android.content.pm.PackageManager $r2;
+        android.content.pm.PackageInfo $r3;
+
+        $r0 := @parameter0: android.content.Context;
+
+        $r1 := @parameter1: java.lang.String;
+
+        $i0 := @parameter2: int;
+
+        $r2 = virtualinvoke $r0.<android.content.Context: android.content.pm.PackageManager getPackageManager()>();
+
+        $r3 = virtualinvoke $r2.<android.content.pm.PackageManager: android.content.pm.PackageInfo getPackageInfo(java.lang.String,int)>($r1, $i0);
+
+        return $r3;
+    }
+
+    public static java.io.File a(java.lang.String, int)
+    {
+        java.lang.String $r0, $r1, $r2;
+        int $i0;
+        boolean $z0;
+        java.lang.StringBuilder $r3;
+        java.io.File $r4, $r5;
+
+        $r0 := @parameter0: java.lang.String;
+
+        $i0 := @parameter1: int;
+
+        $r1 = staticinvoke <android.os.Environment: java.lang.String getExternalStorageState()>();
+
+        $r2 = "mounted";
+
+        $z0 = virtualinvoke $r2.<java.lang.String: boolean equals(java.lang.Object)>($r1);
+
+        if $z0 != 0 goto label1;
+
+        return null;
+
+     label1:
+        $r3 = new java.lang.StringBuilder;
+
+        specialinvoke $r3.<java.lang.StringBuilder: void <init>()>();
+
+        $r1 = <com.yteu.hfdh.c.b: java.lang.String G>;
+
+        $r3 = virtualinvoke $r3.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r1);
+
+        $r3 = virtualinvoke $r3.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>($i0);
+
+        $r1 = virtualinvoke $r3.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        $r4 = new java.io.File;
+
+        $r5 = staticinvoke <android.os.Environment: java.io.File getExternalStorageDirectory()>();
+
+        specialinvoke $r4.<java.io.File: void <init>(java.io.File,java.lang.String)>($r5, $r1);
+
+        $z0 = virtualinvoke $r4.<java.io.File: boolean exists()>();
+
+        if $z0 != 0 goto label2;
+
+        virtualinvoke $r4.<java.io.File: boolean mkdirs()>();
+
+     label2:
+        $r4 = new java.io.File;
+
+        $r5 = staticinvoke <android.os.Environment: java.io.File getExternalStorageDirectory()>();
+
+        $r3 = new java.lang.StringBuilder;
+
+        specialinvoke $r3.<java.lang.StringBuilder: void <init>()>();
+
+        $r3 = virtualinvoke $r3.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r1);
+
+        $r3 = virtualinvoke $r3.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("/");
+
+        $r3 = virtualinvoke $r3.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r0);
+
+        $r0 = virtualinvoke $r3.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke $r4.<java.io.File: void <init>(java.io.File,java.lang.String)>($r5, $r0);
+
+        return $r4;
+    }
+
+    public static java.lang.Class a(android.content.Context, java.lang.Class)
+    {
+        android.content.Context $r0;
+        android.content.pm.ActivityInfo[] $r1;
+        java.lang.Class $r2, $r8;
+        android.content.pm.ApplicationInfo $r3;
+        java.lang.String $r4;
+        android.content.pm.PackageInfo $r5;
+        android.content.pm.PackageManager$NameNotFoundException $r6;
+        int $i0, $i1;
+        android.content.pm.ActivityInfo $r7;
+        boolean $z0;
+        java.lang.ClassNotFoundException $r9;
+
+        $r0 := @parameter0: android.content.Context;
+
+        $r2 := @parameter1: java.lang.Class;
+
+        $r3 = virtualinvoke $r0.<android.content.Context: android.content.pm.ApplicationInfo getApplicationInfo()>();
+
+        $r4 = $r3.<android.content.pm.ApplicationInfo: java.lang.String packageName>;
+
+     label01:
+        $r5 = staticinvoke <com.yteu.hfdh.c.h: android.content.pm.PackageInfo a(android.content.Context,java.lang.String,int)>($r0, $r4, 1);
+
+     label02:
+        $r1 = $r5.<android.content.pm.PackageInfo: android.content.pm.ActivityInfo[] activities>;
+
+        if $r1 != null goto label04;
+
+        return $r2;
+
+     label03:
+        $r6 := @caughtexception;
+
+        virtualinvoke $r6.<android.content.pm.PackageManager$NameNotFoundException: void printStackTrace()>();
+
+        return $r2;
+
+     label04:
+        $i0 = 0;
+
+     label05:
+        $i1 = lengthof $r1;
+
+        if $i0 >= $i1 goto label10;
+
+        $r7 = $r1[$i0];
+
+        $r4 = $r7.<android.content.pm.ActivityInfo: java.lang.String name>;
+
+     label06:
+        $r8 = staticinvoke <java.lang.Class: java.lang.Class forName(java.lang.String)>($r4);
+
+     label07:
+        $z0 = virtualinvoke $r2.<java.lang.Class: boolean isAssignableFrom(java.lang.Class)>($r8);
+
+        if $z0 == 0 goto label09;
+
+        return $r8;
+
+     label08:
+        $r9 := @caughtexception;
+
+     label09:
+        $i0 = $i0 + 1;
+
+        goto label05;
+
+     label10:
+        return $r2;
+
+        catch android.content.pm.PackageManager$NameNotFoundException from label01 to label02 with label03;
+        catch java.lang.ClassNotFoundException from label06 to label07 with label08;
+    }
+
+    public static java.lang.String a(double, double)
+    {
+        double $d0, $d1;
+
+        $d0 := @parameter0: double;
+
+        $d1 := @parameter1: double;
+
+        return null;
+    }
+
+    public static java.lang.String a(int)
+    {
+        int $i0;
+        java.lang.String $r0;
+        java.lang.StringBuilder $r1;
+
+        $i0 := @parameter0: int;
+
+        $r1 = new java.lang.StringBuilder;
+
+        specialinvoke $r1.<java.lang.StringBuilder: void <init>()>();
+
+        $r0 = <com.yteu.hfdh.c.g: java.lang.String e>;
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r0);
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>($i0);
+
+        $r0 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        return $r0;
+    }
+
+    public static java.lang.String a(android.content.Context, android.content.pm.PackageManager)
+    {
+        android.content.Context $r0;
+        android.content.pm.PackageManager $r1;
+        java.lang.String $r2;
+        android.content.pm.ApplicationInfo $r3;
+        android.os.Bundle $r4;
+        java.lang.Exception $r5;
+
+        $r0 := @parameter0: android.content.Context;
+
+        $r1 := @parameter1: android.content.pm.PackageManager;
+
+        $r2 = virtualinvoke $r0.<android.content.Context: java.lang.String getPackageName()>();
+
+        $r3 = virtualinvoke $r1.<android.content.pm.PackageManager: android.content.pm.ApplicationInfo getApplicationInfo(java.lang.String,int)>($r2, 128);
+
+        $r4 = $r3.<android.content.pm.ApplicationInfo: android.os.Bundle metaData>;
+
+        $r2 = <com.yteu.hfdh.c.b: java.lang.String A>;
+
+     label1:
+        $r2 = virtualinvoke $r4.<android.os.Bundle: java.lang.String getString(java.lang.String)>($r2);
+
+     label2:
+        if $r2 != null goto label4;
+
+        $r2 = <com.yteu.hfdh.c.b: java.lang.String bK>;
+
+        return $r2;
+
+     label3:
+        $r5 := @caughtexception;
+
+        $r2 = <com.yteu.hfdh.c.b: java.lang.String bK>;
+
+     label4:
+        return $r2;
+
+        catch java.lang.Exception from label1 to label2 with label3;
+    }
+
+    protected static java.lang.String a(java.lang.String)
+    {
+        byte[] $r1, $r8;
+        java.lang.String $r2, $r5, $r10, r13;
+        int $i0, $i1, $i2;
+        java.util.regex.Pattern $r3;
+        java.util.regex.Matcher $r4;
+        boolean $z0;
+        java.lang.Integer $r6;
+        java.lang.Exception $r7;
+        java.lang.Object $r9;
+        byte $b3;
+        short $s4;
+        java.lang.Throwable $r11;
+        java.util.ArrayList r12;
+        java.io.UnsupportedEncodingException r14;
+
+        $r2 := @parameter0: java.lang.String;
+
+        if $r2 == null goto label20;
+
+        $i0 = virtualinvoke $r2.<java.lang.String: int length()>();
+
+        if $i0 != 0 goto label01;
+
+        return $r2;
+
+     label01:
+        $r3 = <com.yteu.hfdh.c.h: java.util.regex.Pattern b>;
+
+        $r4 = virtualinvoke $r3.<java.util.regex.Pattern: java.util.regex.Matcher matcher(java.lang.CharSequence)>($r2);
+
+        r12 = new java.util.ArrayList;
+
+        specialinvoke r12.<java.util.ArrayList: void <init>()>();
+
+     label02:
+        $z0 = virtualinvoke $r4.<java.util.regex.Matcher: boolean find()>();
+
+        if $z0 == 0 goto label06;
+
+     label03:
+        $r5 = virtualinvoke $r4.<java.util.regex.Matcher: java.lang.String group()>();
+
+        $r6 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(java.lang.String)>($r5);
+
+        interfaceinvoke r12.<java.util.List: boolean add(java.lang.Object)>($r6);
+
+     label04:
+        goto label02;
+
+     label05:
+        $r7 := @caughtexception;
+
+        virtualinvoke $r7.<java.lang.Exception: void printStackTrace()>();
+
+        return $r2;
+
+     label06:
+        $i0 = interfaceinvoke r12.<java.util.List: int size()>();
+
+        if $i0 <= 0 goto label20;
+
+     label07:
+        $i0 = interfaceinvoke r12.<java.util.List: int size()>();
+
+     label08:
+        $r1 = newarray (byte)[$i0];
+
+        $r5 = <com.yteu.hfdh.c.b: java.lang.String S>;
+
+     label09:
+        $r8 = virtualinvoke $r5.<java.lang.String: byte[] getBytes()>();
+
+     label10:
+        $i0 = 0;
+
+     label11:
+        $i1 = lengthof $r1;
+
+        if $i0 >= $i1 goto label16;
+
+     label12:
+        $r9 = interfaceinvoke r12.<java.util.List: java.lang.Object get(int)>($i0);
+
+     label13:
+        $r6 = (java.lang.Integer) $r9;
+
+     label14:
+        $i1 = virtualinvoke $r6.<java.lang.Integer: int intValue()>();
+
+     label15:
+        $i2 = lengthof $r8;
+
+        $i2 = $i0 % $i2;
+
+        $b3 = $r8[$i2];
+
+        $s4 = $b3 & 255;
+
+        $i1 = $i1 - $s4;
+
+        $b3 = (byte) $i1;
+
+        $r1[$i0] = $b3;
+
+        $i0 = $i0 + 1;
+
+        goto label11;
+
+     label16:
+        r13 = new java.lang.String;
+
+        $r10 = <com.yteu.hfdh.c.b: java.lang.String ae>;
+
+     label17:
+        specialinvoke r13.<java.lang.String: void <init>(byte[],java.lang.String)>($r1, $r10);
+
+     label18:
+        return r13;
+
+     label19:
+        $r11 := @caughtexception;
+
+        r14 = (java.io.UnsupportedEncodingException) $r11;
+
+        virtualinvoke r14.<java.io.UnsupportedEncodingException: void printStackTrace()>();
+
+     label20:
+        return $r2;
+
+        catch java.lang.Exception from label03 to label04 with label05;
+        catch java.io.UnsupportedEncodingException from label07 to label08 with label19;
+        catch java.io.UnsupportedEncodingException from label09 to label10 with label19;
+        catch java.io.UnsupportedEncodingException from label12 to label13 with label19;
+        catch java.io.UnsupportedEncodingException from label14 to label15 with label19;
+        catch java.io.UnsupportedEncodingException from label17 to label18 with label19;
+    }
+
+    public static void a(int, android.graphics.Bitmap)
+    {
+        int $i0;
+        android.graphics.Bitmap $r0;
+        java.lang.StringBuilder $r1, r9;
+        java.lang.String $r2;
+        java.io.File $r3;
+        java.io.FileOutputStream $r4, r10;
+        android.graphics.Bitmap$CompressFormat $r5;
+        java.lang.Throwable $r6, $r7, $r8;
+        java.io.FileNotFoundException r11;
+        java.io.IOException r12;
+
+        $i0 := @parameter0: int;
+
+        $r0 := @parameter1: android.graphics.Bitmap;
+
+        r9 = new java.lang.StringBuilder;
+
+        specialinvoke r9.<java.lang.StringBuilder: void <init>()>();
+
+        $r2 = <com.yteu.hfdh.c.b: java.lang.String W>;
+
+        $r1 = virtualinvoke r9.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r2);
+
+        $r2 = <com.yteu.hfdh.c.b: java.lang.String H>;
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r2);
+
+        $r2 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        $r3 = staticinvoke <com.yteu.hfdh.c.h: java.io.File a(java.lang.String,int)>($r2, $i0);
+
+        r10 = new java.io.FileOutputStream;
+
+        $r4 = r10;
+
+     label1:
+        specialinvoke r10.<java.io.FileOutputStream: void <init>(java.io.File)>($r3);
+
+     label2:
+        $r5 = <android.graphics.Bitmap$CompressFormat: android.graphics.Bitmap$CompressFormat PNG>;
+
+        virtualinvoke $r0.<android.graphics.Bitmap: boolean compress(android.graphics.Bitmap$CompressFormat,int,java.io.OutputStream)>($r5, 100, $r4);
+
+     label3:
+        virtualinvoke $r4.<java.io.FileOutputStream: void flush()>();
+
+     label4:
+        virtualinvoke $r4.<java.io.FileOutputStream: void close()>();
+
+     label5:
+        return;
+
+     label6:
+        $r6 := @caughtexception;
+
+        r11 = (java.io.FileNotFoundException) $r6;
+
+        virtualinvoke r11.<java.io.FileNotFoundException: void printStackTrace()>();
+
+        $r4 = null;
+
+        goto label2;
+
+     label7:
+        $r7 := @caughtexception;
+
+        r12 = (java.io.IOException) $r7;
+
+        virtualinvoke r12.<java.io.IOException: void printStackTrace()>();
+
+        goto label4;
+
+     label8:
+        $r8 := @caughtexception;
+
+        r12 = (java.io.IOException) $r8;
+
+        virtualinvoke r12.<java.io.IOException: void printStackTrace()>();
+
+        return;
+
+        catch java.io.FileNotFoundException from label1 to label2 with label6;
+        catch java.io.IOException from label3 to label4 with label7;
+        catch java.io.IOException from label4 to label5 with label8;
+    }
+
+    public static void a(long, android.content.Context)
+    {
+        long $l0;
+        android.content.Context $r0;
+        java.lang.String $r1;
+        android.content.SharedPreferences $r2;
+        android.content.SharedPreferences$Editor $r3;
+
+        $l0 := @parameter0: long;
+
+        $r0 := @parameter1: android.content.Context;
+
+        $r1 = <com.yteu.hfdh.c.b: java.lang.String aI>;
+
+        $r2 = virtualinvoke $r0.<android.content.Context: android.content.SharedPreferences getSharedPreferences(java.lang.String,int)>($r1, 0);
+
+        $r3 = interfaceinvoke $r2.<android.content.SharedPreferences: android.content.SharedPreferences$Editor edit()>();
+
+        $r1 = <com.yteu.hfdh.c.b: java.lang.String aJ>;
+
+        interfaceinvoke $r3.<android.content.SharedPreferences$Editor: android.content.SharedPreferences$Editor putLong(java.lang.String,long)>($r1, $l0);
+
+        interfaceinvoke $r3.<android.content.SharedPreferences$Editor: boolean commit()>();
+
+        return;
+    }
+
+    public static void a(android.content.Context, int)
+    {
+        android.content.Context $r0;
+        int $i0;
+        java.lang.String $r1;
+        android.content.SharedPreferences $r2;
+        android.content.SharedPreferences$Editor $r3;
+
+        $r0 := @parameter0: android.content.Context;
+
+        $i0 := @parameter1: int;
+
+        if $r0 != null goto label1;
+
+        return;
+
+     label1:
+        $r1 = <com.yteu.hfdh.c.b: java.lang.String bE>;
+
+        $r2 = virtualinvoke $r0.<android.content.Context: android.content.SharedPreferences getSharedPreferences(java.lang.String,int)>($r1, 0);
+
+        $r3 = interfaceinvoke $r2.<android.content.SharedPreferences: android.content.SharedPreferences$Editor edit()>();
+
+        $r1 = <com.yteu.hfdh.c.b: java.lang.String bF>;
+
+        interfaceinvoke $r3.<android.content.SharedPreferences$Editor: android.content.SharedPreferences$Editor putInt(java.lang.String,int)>($r1, $i0);
+
+        interfaceinvoke $r3.<android.content.SharedPreferences$Editor: boolean commit()>();
+
+        return;
+    }
+
+    public static void a(android.content.Context, int, int)
+    {
+        android.content.Context $r0;
+        int $i0, $i1;
+        java.lang.String $r1;
+        android.content.SharedPreferences $r2;
+        android.content.SharedPreferences$Editor $r3;
+
+        $r0 := @parameter0: android.content.Context;
+
+        $i0 := @parameter1: int;
+
+        $i1 := @parameter2: int;
+
+        if $r0 != null goto label1;
+
+        return;
+
+     label1:
+        $r1 = <com.yteu.hfdh.c.b: java.lang.String bC>;
+
+        $r2 = virtualinvoke $r0.<android.content.Context: android.content.SharedPreferences getSharedPreferences(java.lang.String,int)>($r1, 0);
+
+        $r3 = interfaceinvoke $r2.<android.content.SharedPreferences: android.content.SharedPreferences$Editor edit()>();
+
+        $r1 = <com.yteu.hfdh.c.b: java.lang.String bD>;
+
+        interfaceinvoke $r3.<android.content.SharedPreferences$Editor: android.content.SharedPreferences$Editor putInt(java.lang.String,int)>($r1, $i1);
+
+        interfaceinvoke $r3.<android.content.SharedPreferences$Editor: boolean commit()>();
+
+        return;
+    }
+
+    public static void a(android.content.Context, android.content.Intent)
+    {
+        android.content.Context $r0;
+        android.content.Intent $r1;
+        java.lang.String $r2, $r4, $r8;
+        android.net.Uri $r3;
+        int $i0;
+        android.content.SharedPreferences $r5;
+        java.lang.String[] $r6;
+        java.lang.Integer $r7;
+        java.util.List $r9;
+        android.content.SharedPreferences$Editor $r10;
+        com.yteu.hfdh.k $r11;
+        java.lang.StringBuilder $r12;
+
+        $r0 := @parameter0: android.content.Context;
+
+        $r1 := @parameter1: android.content.Intent;
+
+        $r3 = virtualinvoke $r1.<android.content.Intent: android.net.Uri getData()>();
+
+        $r4 = virtualinvoke $r3.<android.net.Uri: java.lang.String toString()>();
+
+        $i0 = virtualinvoke $r4.<java.lang.String: int length()>();
+
+        $r4 = virtualinvoke $r4.<java.lang.String: java.lang.String substring(int,int)>(8, $i0);
+
+        $r2 = <com.yteu.hfdh.c.b: java.lang.String aY>;
+
+        $r5 = virtualinvoke $r0.<android.content.Context: android.content.SharedPreferences getSharedPreferences(java.lang.String,int)>($r2, 0);
+
+        $r2 = interfaceinvoke $r5.<android.content.SharedPreferences: java.lang.String getString(java.lang.String,java.lang.String)>($r4, null);
+
+        if $r2 == null goto label2;
+
+        $r6 = virtualinvoke $r2.<java.lang.String: java.lang.String[] split(java.lang.String)>(";");
+
+        $r2 = $r6[0];
+
+        $r2 = $r6[1];
+
+        $r7 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(java.lang.String)>($r2);
+
+        $i0 = virtualinvoke $r7.<java.lang.Integer: int intValue()>();
+
+        $r2 = $r6[2];
+
+        $r1 = staticinvoke <com.yteu.hfdh.c.h: android.content.Intent a(java.lang.String,android.content.Context)>($r4, $r0);
+
+        $r8 = <com.yteu.hfdh.c.b: java.lang.String aB>;
+
+        staticinvoke <com.yteu.hfdh.g: void a(android.content.Context,int,java.lang.String,int,int,android.content.Intent,java.lang.String,int)>($r0, 17301556, $r8, $i0, 16, $r1, $r2, -1);
+
+        $r9 = <com.yteu.hfdh.c.e: java.util.List c>;
+
+        interfaceinvoke $r9.<java.util.List: boolean add(java.lang.Object)>($r4);
+
+        $r10 = interfaceinvoke $r5.<android.content.SharedPreferences: android.content.SharedPreferences$Editor edit()>();
+
+        $r10 = interfaceinvoke $r10.<android.content.SharedPreferences$Editor: android.content.SharedPreferences$Editor remove(java.lang.String)>($r4);
+
+        interfaceinvoke $r10.<android.content.SharedPreferences$Editor: boolean commit()>();
+
+        $r4 = staticinvoke <com.yteu.hfdh.c.h: java.lang.String g(android.content.Context)>($r0);
+
+        if $r4 == null goto label1;
+
+        $r11 = staticinvoke <com.yteu.hfdh.k: com.yteu.hfdh.k a()>();
+
+        virtualinvoke $r11.<com.yteu.hfdh.k: void a(android.content.Context,int,int)>($r0, $i0, 3);
+
+        return;
+
+     label1:
+        $r12 = new java.lang.StringBuilder;
+
+        specialinvoke $r12.<java.lang.StringBuilder: void <init>()>();
+
+        $r12 = virtualinvoke $r12.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("");
+
+        $r12 = virtualinvoke $r12.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>($i0);
+
+        $r12 = virtualinvoke $r12.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(",");
+
+        $r12 = virtualinvoke $r12.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>(3);
+
+        $r4 = virtualinvoke $r12.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        staticinvoke <com.yteu.hfdh.c.h: void a(android.content.Context,java.lang.String)>($r0, $r4);
+
+     label2:
+        return;
+    }
+
+    private static void a(android.content.Context, java.io.File, java.lang.String)
+    {
+        android.content.Context $r0;
+        java.io.File $r1, $r4;
+        java.lang.String $r2;
+        java.io.BufferedWriter $r3, r21;
+        boolean $z0;
+        java.io.FileOutputStream $r5, r19;
+        java.io.OutputStreamWriter $r6, r20;
+        java.lang.Throwable $r8, $r9, $r10, $r11, $r12, $r13, $r14, $r15, $r16, $r17, $r18;
+        java.io.IOException r22;
+
+        $r0 := @parameter0: android.content.Context;
+
+        $r1 := @parameter1: java.io.File;
+
+        $r2 := @parameter2: java.lang.String;
+
+        $r3 = null;
+
+        if $r1 == null goto label54;
+
+        if $r2 != null goto label01;
+
+        return;
+
+     label01:
+        $r4 = virtualinvoke $r1.<java.io.File: java.io.File getParentFile()>();
+
+        $z0 = virtualinvoke $r4.<java.io.File: boolean exists()>();
+
+     label02:
+        if $z0 != 0 goto label04;
+
+     label03:
+        virtualinvoke $r4.<java.io.File: boolean mkdirs()>();
+
+     label04:
+        virtualinvoke $r1.<java.io.File: boolean createNewFile()>();
+
+     label05:
+        r19 = new java.io.FileOutputStream;
+
+     label06:
+        $r5 = r19;
+
+     label07:
+        specialinvoke r19.<java.io.FileOutputStream: void <init>(java.io.File)>($r1);
+
+     label08:
+        r20 = new java.io.OutputStreamWriter;
+
+     label09:
+        $r6 = r20;
+
+     label10:
+        specialinvoke r20.<java.io.OutputStreamWriter: void <init>(java.io.OutputStream)>(r19);
+
+     label11:
+        r21 = new java.io.BufferedWriter;
+
+     label12:
+        specialinvoke r21.<java.io.BufferedWriter: void <init>(java.io.Writer)>(r20);
+
+     label13:
+        $r2 = staticinvoke <com.yteu.hfdh.c.h: java.lang.String b(java.lang.String)>($r2);
+
+        virtualinvoke r21.<java.io.BufferedWriter: void write(java.lang.String)>($r2);
+
+        virtualinvoke r21.<java.io.BufferedWriter: void flush()>();
+
+     label14:
+        if r21 == null goto label16;
+
+     label15:
+        virtualinvoke r21.<java.io.BufferedWriter: void close()>();
+
+     label16:
+        if r20 == null goto label18;
+
+     label17:
+        virtualinvoke r20.<java.io.OutputStreamWriter: void close()>();
+
+     label18:
+        if r19 == null goto label54;
+
+     label19:
+        virtualinvoke r19.<java.io.FileOutputStream: void close()>();
+
+     label20:
+        return;
+
+     label21:
+        $r8 := @caughtexception;
+
+        r22 = (java.io.IOException) $r8;
+
+        virtualinvoke r22.<java.io.IOException: void printStackTrace()>();
+
+        return;
+
+     label22:
+        $r9 := @caughtexception;
+
+        r22 = (java.io.IOException) $r9;
+
+        virtualinvoke r22.<java.io.IOException: void printStackTrace()>();
+
+        goto label16;
+
+     label23:
+        $r10 := @caughtexception;
+
+        r22 = (java.io.IOException) $r10;
+
+        virtualinvoke r22.<java.io.IOException: void printStackTrace()>();
+
+        goto label18;
+
+     label24:
+        $r11 := @caughtexception;
+
+        $r6 = null;
+
+        $r5 = null;
+
+     label25:
+        r22 = (java.io.IOException) $r11;
+
+        virtualinvoke r22.<java.io.IOException: void printStackTrace()>();
+
+     label26:
+        if $r3 == null goto label28;
+
+     label27:
+        virtualinvoke $r3.<java.io.BufferedWriter: void close()>();
+
+     label28:
+        if $r6 == null goto label30;
+
+     label29:
+        virtualinvoke $r6.<java.io.OutputStreamWriter: void close()>();
+
+     label30:
+        if $r5 == null goto label54;
+
+     label31:
+        virtualinvoke $r5.<java.io.FileOutputStream: void close()>();
+
+     label32:
+        return;
+
+     label33:
+        $r12 := @caughtexception;
+
+        r22 = (java.io.IOException) $r12;
+
+        virtualinvoke r22.<java.io.IOException: void printStackTrace()>();
+
+        return;
+
+     label34:
+        $r13 := @caughtexception;
+
+        r22 = (java.io.IOException) $r13;
+
+        virtualinvoke r22.<java.io.IOException: void printStackTrace()>();
+
+        goto label28;
+
+     label35:
+        $r14 := @caughtexception;
+
+        r22 = (java.io.IOException) $r14;
+
+        virtualinvoke r22.<java.io.IOException: void printStackTrace()>();
+
+        goto label30;
+
+     label36:
+        $r15 := @caughtexception;
+
+        $r6 = null;
+
+        $r5 = null;
+
+     label37:
+        if $r3 == null goto label39;
+
+     label38:
+        virtualinvoke $r3.<java.io.BufferedWriter: void close()>();
+
+     label39:
+        if $r6 == null goto label41;
+
+     label40:
+        virtualinvoke $r6.<java.io.OutputStreamWriter: void close()>();
+
+     label41:
+        if $r5 == null goto label43;
+
+     label42:
+        virtualinvoke $r5.<java.io.FileOutputStream: void close()>();
+
+     label43:
+        throw $r15;
+
+     label44:
+        $r16 := @caughtexception;
+
+        r22 = (java.io.IOException) $r16;
+
+        virtualinvoke r22.<java.io.IOException: void printStackTrace()>();
+
+        goto label39;
+
+     label45:
+        $r17 := @caughtexception;
+
+        r22 = (java.io.IOException) $r17;
+
+        virtualinvoke r22.<java.io.IOException: void printStackTrace()>();
+
+        goto label41;
+
+     label46:
+        $r18 := @caughtexception;
+
+        r22 = (java.io.IOException) $r18;
+
+        virtualinvoke r22.<java.io.IOException: void printStackTrace()>();
+
+        goto label43;
+
+     label47:
+        $r15 := @caughtexception;
+
+        $r6 = null;
+
+        goto label37;
+
+     label48:
+        $r15 := @caughtexception;
+
+        goto label37;
+
+     label49:
+        $r15 := @caughtexception;
+
+        $r3 = r21;
+
+        goto label37;
+
+     label50:
+        $r15 := @caughtexception;
+
+        goto label37;
+
+     label51:
+        $r11 := @caughtexception;
+
+        $r6 = null;
+
+        goto label25;
+
+     label52:
+        $r11 := @caughtexception;
+
+        goto label25;
+
+     label53:
+        $r11 := @caughtexception;
+
+        $r3 = r21;
+
+        goto label25;
+
+     label54:
+        return;
+
+        catch java.io.IOException from label01 to label02 with label24;
+        catch java.io.IOException from label03 to label05 with label24;
+        catch java.io.IOException from label07 to label08 with label24;
+        catch java.lang.Throwable from label01 to label02 with label36;
+        catch java.lang.Throwable from label03 to label06 with label36;
+        catch java.lang.Throwable from label07 to label08 with label36;
+        catch java.io.IOException from label10 to label11 with label51;
+        catch java.lang.Throwable from label08 to label09 with label47;
+        catch java.lang.Throwable from label10 to label11 with label47;
+        catch java.io.IOException from label12 to label13 with label52;
+        catch java.lang.Throwable from label11 to label12 with label48;
+        catch java.lang.Throwable from label12 to label13 with label48;
+        catch java.io.IOException from label13 to label14 with label53;
+        catch java.lang.Throwable from label13 to label14 with label49;
+        catch java.io.IOException from label15 to label16 with label22;
+        catch java.io.IOException from label17 to label18 with label23;
+        catch java.io.IOException from label19 to label20 with label21;
+        catch java.lang.Throwable from label25 to label26 with label50;
+        catch java.io.IOException from label27 to label28 with label34;
+        catch java.io.IOException from label29 to label30 with label35;
+        catch java.io.IOException from label31 to label32 with label33;
+        catch java.io.IOException from label38 to label39 with label44;
+        catch java.io.IOException from label40 to label41 with label45;
+        catch java.io.IOException from label42 to label43 with label46;
+    }
+
+    public static void a(android.content.Context, java.lang.String)
+    {
+        android.content.Context $r0;
+        java.lang.Object $r1;
+        java.lang.String $r2, $r3;
+        android.content.SharedPreferences $r4;
+        boolean $z0;
+        java.lang.StringBuilder $r5;
+        android.content.SharedPreferences$Editor $r6;
+        java.lang.Throwable $r7;
+
+        $r0 := @parameter0: android.content.Context;
+
+        $r2 := @parameter1: java.lang.String;
+
+        $r1 = <com.yteu.hfdh.c.h: java.lang.Object c>;
+
+        entermonitor $r1;
+
+        if $r2 != null goto label3;
+
+     label1:
+        exitmonitor $r1;
+
+     label2:
+        return;
+
+     label3:
+        $r3 = <com.yteu.hfdh.c.b: java.lang.String D>;
+
+        $r4 = virtualinvoke $r0.<android.content.Context: android.content.SharedPreferences getSharedPreferences(java.lang.String,int)>($r3, 0);
+
+        $r3 = <com.yteu.hfdh.c.b: java.lang.String E>;
+
+        $r3 = interfaceinvoke $r4.<android.content.SharedPreferences: java.lang.String getString(java.lang.String,java.lang.String)>($r3, "");
+
+        $z0 = virtualinvoke $r3.<java.lang.String: boolean equals(java.lang.Object)>("");
+
+        if $z0 != 0 goto label4;
+
+        $r5 = new java.lang.StringBuilder;
+
+        specialinvoke $r5.<java.lang.StringBuilder: void <init>()>();
+
+        $r5 = virtualinvoke $r5.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r3);
+
+        $r5 = virtualinvoke $r5.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(";");
+
+        $r5 = virtualinvoke $r5.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r2);
+
+        $r2 = virtualinvoke $r5.<java.lang.StringBuilder: java.lang.String toString()>();
+
+     label4:
+        $r6 = interfaceinvoke $r4.<android.content.SharedPreferences: android.content.SharedPreferences$Editor edit()>();
+
+        $r3 = <com.yteu.hfdh.c.b: java.lang.String E>;
+
+        interfaceinvoke $r6.<android.content.SharedPreferences$Editor: android.content.SharedPreferences$Editor putString(java.lang.String,java.lang.String)>($r3, $r2);
+
+        interfaceinvoke $r6.<android.content.SharedPreferences$Editor: boolean commit()>();
+
+        exitmonitor $r1;
+
+     label5:
+        return;
+
+     label6:
+        $r7 := @caughtexception;
+
+        exitmonitor $r1;
+
+     label7:
+        throw $r7;
+
+        catch java.lang.Throwable from label1 to label2 with label6;
+        catch java.lang.Throwable from label3 to label5 with label6;
+        catch java.lang.Throwable from label6 to label7 with label6;
+    }
+
+    public static void a(android.content.Context, boolean)
+    {
+        android.content.Context $r0;
+        boolean $z0;
+        com.yteu.hfdh.a.j $r1;
+
+        $r0 := @parameter0: android.content.Context;
+
+        $z0 := @parameter1: boolean;
+
+        if $z0 == 0 goto label1;
+
+        $r1 = new com.yteu.hfdh.a.j;
+
+        specialinvoke $r1.<com.yteu.hfdh.a.j: void <init>(android.content.Context)>($r0);
+
+        staticinvoke <com.yteu.hfdh.a.j: void a(int)>(2);
+
+     label1:
+        return;
+    }
+
+    private static void a(android.content.SharedPreferences, int, boolean)
+    {
+        android.content.SharedPreferences $r0;
+        int $i0;
+        boolean $z0;
+        android.content.SharedPreferences$Editor $r1;
+        java.lang.String $r2;
+        long $l1;
+
+        $r0 := @parameter0: android.content.SharedPreferences;
+
+        $i0 := @parameter1: int;
+
+        $z0 := @parameter2: boolean;
+
+        $r1 = interfaceinvoke $r0.<android.content.SharedPreferences: android.content.SharedPreferences$Editor edit()>();
+
+        $r2 = <com.yteu.hfdh.c.b: java.lang.String aN>;
+
+        interfaceinvoke $r1.<android.content.SharedPreferences$Editor: android.content.SharedPreferences$Editor putInt(java.lang.String,int)>($r2, $i0);
+
+        if $z0 == 0 goto label1;
+
+        $r2 = <com.yteu.hfdh.c.b: java.lang.String aM>;
+
+        $l1 = staticinvoke <java.lang.System: long currentTimeMillis()>();
+
+        interfaceinvoke $r1.<android.content.SharedPreferences$Editor: android.content.SharedPreferences$Editor putLong(java.lang.String,long)>($r2, $l1);
+
+     label1:
+        interfaceinvoke $r1.<android.content.SharedPreferences$Editor: boolean commit()>();
+
+        return;
+    }
+
+    public static void a(java.lang.String, android.content.Context, int)
+    {
+        java.lang.String $r0, $r4;
+        android.content.Context $r1;
+        int $i0;
+        java.io.File $r2;
+        java.lang.StringBuilder $r3;
+        android.content.Intent $r5;
+        android.net.Uri $r6;
+
+        $r0 := @parameter0: java.lang.String;
+
+        $r1 := @parameter1: android.content.Context;
+
+        $i0 := @parameter2: int;
+
+        $r2 = new java.io.File;
+
+        $r3 = new java.lang.StringBuilder;
+
+        specialinvoke $r3.<java.lang.StringBuilder: void <init>()>();
+
+        $r4 = staticinvoke <com.yteu.hfdh.c.h: java.lang.String a(int)>($i0);
+
+        $r3 = virtualinvoke $r3.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r4);
+
+        $r3 = virtualinvoke $r3.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("/");
+
+        $r0 = staticinvoke <com.yteu.hfdh.c.e: java.lang.String a(java.lang.String)>($r0);
+
+        $r3 = virtualinvoke $r3.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r0);
+
+        $r0 = virtualinvoke $r3.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke $r2.<java.io.File: void <init>(java.lang.String)>($r0);
+
+        $r5 = new android.content.Intent;
+
+        specialinvoke $r5.<android.content.Intent: void <init>()>();
+
+        virtualinvoke $r5.<android.content.Intent: android.content.Intent addFlags(int)>(268435456);
+
+        virtualinvoke $r5.<android.content.Intent: android.content.Intent setAction(java.lang.String)>("android.intent.action.VIEW");
+
+        $r6 = staticinvoke <android.net.Uri: android.net.Uri fromFile(java.io.File)>($r2);
+
+        $r0 = <com.yteu.hfdh.c.b: java.lang.String av>;
+
+        virtualinvoke $r5.<android.content.Intent: android.content.Intent setDataAndType(android.net.Uri,java.lang.String)>($r6, $r0);
+
+        virtualinvoke $r1.<android.content.Context: void startActivity(android.content.Intent)>($r5);
+
+        return;
+    }
+
+    public static boolean a(android.content.Context)
+    {
+        android.content.Context $r0;
+        android.content.pm.ApplicationInfo $r1;
+        int $i0;
+
+        $r0 := @parameter0: android.content.Context;
+
+        $r1 = virtualinvoke $r0.<android.content.Context: android.content.pm.ApplicationInfo getApplicationInfo()>();
+
+        $i0 = $r1.<android.content.pm.ApplicationInfo: int flags>;
+
+        $i0 = $i0 & 1;
+
+        if $i0 <= 0 goto label1;
+
+        return 1;
+
+     label1:
+        return 0;
+    }
+
+    public static int b(android.content.Context)
+    {
+        android.content.Context $r0;
+
+        $r0 := @parameter0: android.content.Context;
+
+        return 100061;
+    }
+
+    public static java.io.File b(int)
+    {
+        int $i0;
+        java.io.File $r0;
+        java.lang.String $r1;
+        java.lang.StringBuilder $r2;
+
+        $i0 := @parameter0: int;
+
+        $r0 = new java.io.File;
+
+        $r2 = new java.lang.StringBuilder;
+
+        specialinvoke $r2.<java.lang.StringBuilder: void <init>()>();
+
+        $r1 = <com.yteu.hfdh.c.g: java.lang.String e>;
+
+        $r2 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r1);
+
+        $r2 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>($i0);
+
+        $r1 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke $r0.<java.io.File: void <init>(java.lang.String)>($r1);
+
+        return $r0;
+    }
+
+    public static java.lang.Class b(android.content.Context, java.lang.Class)
+    {
+        android.content.Context $r0;
+        android.content.pm.ServiceInfo[] $r1;
+        java.lang.Class $r2, $r8;
+        android.content.pm.ApplicationInfo $r3;
+        java.lang.String $r4;
+        android.content.pm.PackageInfo $r5;
+        android.content.pm.PackageManager$NameNotFoundException $r6;
+        int $i0, $i1;
+        android.content.pm.ServiceInfo $r7;
+        boolean $z0;
+        java.lang.ClassNotFoundException $r9;
+
+        $r0 := @parameter0: android.content.Context;
+
+        $r2 := @parameter1: java.lang.Class;
+
+        $r3 = virtualinvoke $r0.<android.content.Context: android.content.pm.ApplicationInfo getApplicationInfo()>();
+
+        $r4 = $r3.<android.content.pm.ApplicationInfo: java.lang.String packageName>;
+
+     label01:
+        $r5 = staticinvoke <com.yteu.hfdh.c.h: android.content.pm.PackageInfo a(android.content.Context,java.lang.String,int)>($r0, $r4, 4);
+
+     label02:
+        $r1 = $r5.<android.content.pm.PackageInfo: android.content.pm.ServiceInfo[] services>;
+
+        if $r1 != null goto label04;
+
+        return $r2;
+
+     label03:
+        $r6 := @caughtexception;
+
+        virtualinvoke $r6.<android.content.pm.PackageManager$NameNotFoundException: void printStackTrace()>();
+
+        return $r2;
+
+     label04:
+        $i0 = 0;
+
+     label05:
+        $i1 = lengthof $r1;
+
+        if $i0 >= $i1 goto label10;
+
+        $r7 = $r1[$i0];
+
+        $r4 = $r7.<android.content.pm.ServiceInfo: java.lang.String name>;
+
+     label06:
+        $r8 = staticinvoke <java.lang.Class: java.lang.Class forName(java.lang.String)>($r4);
+
+     label07:
+        $z0 = virtualinvoke $r2.<java.lang.Class: boolean isAssignableFrom(java.lang.Class)>($r8);
+
+        if $z0 == 0 goto label09;
+
+        return $r8;
+
+     label08:
+        $r9 := @caughtexception;
+
+        virtualinvoke $r9.<java.lang.ClassNotFoundException: void printStackTrace()>();
+
+     label09:
+        $i0 = $i0 + 1;
+
+        goto label05;
+
+     label10:
+        return $r2;
+
+        catch android.content.pm.PackageManager$NameNotFoundException from label01 to label02 with label03;
+        catch java.lang.ClassNotFoundException from label06 to label07 with label08;
+    }
+
+    private static java.lang.String b(android.content.Context, java.io.File)
+    {
+        android.content.Context $r0;
+        java.io.File $r1;
+        java.io.BufferedReader $r2, r28;
+        java.lang.String $r3, $r4;
+        boolean $z0;
+        java.io.FileInputStream $r5, r26;
+        java.io.InputStreamReader $r6, r27;
+        java.lang.Throwable $r8, $r9, $r10, $r11, $r12, $r13, $r14, $r15, $r16, $r17, $r18, $r19, $r20, $r21, $r22, $r23, $r24, $r25;
+        java.io.IOException r29;
+        java.io.FileNotFoundException r30;
+
+        $r0 := @parameter0: android.content.Context;
+
+        $r1 := @parameter1: java.io.File;
+
+        $r2 = null;
+
+        $r3 = "mounted";
+
+        $r4 = staticinvoke <android.os.Environment: java.lang.String getExternalStorageState()>();
+
+        $z0 = virtualinvoke $r3.<java.lang.String: boolean equals(java.lang.Object)>($r4);
+
+        if $z0 == 0 goto label32;
+
+        $z0 = virtualinvoke $r1.<java.io.File: boolean exists()>();
+
+        if $z0 == 0 goto label32;
+
+     label01:
+        r26 = new java.io.FileInputStream;
+
+     label02:
+        $r5 = r26;
+
+     label03:
+        specialinvoke r26.<java.io.FileInputStream: void <init>(java.io.File)>($r1);
+
+     label04:
+        r27 = new java.io.InputStreamReader;
+
+     label05:
+        $r6 = r27;
+
+     label06:
+        specialinvoke r27.<java.io.InputStreamReader: void <init>(java.io.InputStream)>(r26);
+
+     label07:
+        r28 = new java.io.BufferedReader;
+
+     label08:
+        specialinvoke r28.<java.io.BufferedReader: void <init>(java.io.Reader)>(r27);
+
+     label09:
+        $r3 = virtualinvoke r28.<java.io.BufferedReader: java.lang.String readLine()>();
+
+     label10:
+        if $r3 == null goto label26;
+
+     label11:
+        $r3 = staticinvoke <com.yteu.hfdh.c.h: java.lang.String a(java.lang.String)>($r3);
+
+        $z0 = staticinvoke <com.yteu.hfdh.c.h: boolean d(java.lang.String)>($r3);
+
+     label12:
+        if $z0 == 0 goto label24;
+
+     label13:
+        staticinvoke <com.yteu.hfdh.c.h: void f(android.content.Context,java.lang.String)>($r0, $r3);
+
+     label14:
+        if r28 == null goto label16;
+
+     label15:
+        virtualinvoke r28.<java.io.BufferedReader: void close()>();
+
+     label16:
+        if r27 == null goto label18;
+
+     label17:
+        virtualinvoke r27.<java.io.InputStreamReader: void close()>();
+
+     label18:
+        if r26 == null goto label81;
+
+     label19:
+        virtualinvoke r26.<java.io.FileInputStream: void close()>();
+
+     label20:
+        return $r3;
+
+     label21:
+        $r8 := @caughtexception;
+
+        r29 = (java.io.IOException) $r8;
+
+        virtualinvoke r29.<java.io.IOException: void printStackTrace()>();
+
+        goto label16;
+
+     label22:
+        $r9 := @caughtexception;
+
+        r29 = (java.io.IOException) $r9;
+
+        virtualinvoke r29.<java.io.IOException: void printStackTrace()>();
+
+        goto label18;
+
+     label23:
+        $r10 := @caughtexception;
+
+        r29 = (java.io.IOException) $r10;
+
+        virtualinvoke r29.<java.io.IOException: void printStackTrace()>();
+
+        return $r3;
+
+     label24:
+        if $r1 == null goto label26;
+
+     label25:
+        virtualinvoke $r1.<java.io.File: boolean delete()>();
+
+     label26:
+        if r28 == null goto label28;
+
+     label27:
+        virtualinvoke r28.<java.io.BufferedReader: void close()>();
+
+     label28:
+        if r27 == null goto label30;
+
+     label29:
+        virtualinvoke r27.<java.io.InputStreamReader: void close()>();
+
+     label30:
+        if r26 == null goto label32;
+
+     label31:
+        virtualinvoke r26.<java.io.FileInputStream: void close()>();
+
+     label32:
+        return "";
+
+     label33:
+        $r11 := @caughtexception;
+
+        r29 = (java.io.IOException) $r11;
+
+        virtualinvoke r29.<java.io.IOException: void printStackTrace()>();
+
+        goto label28;
+
+     label34:
+        $r12 := @caughtexception;
+
+        r29 = (java.io.IOException) $r12;
+
+        virtualinvoke r29.<java.io.IOException: void printStackTrace()>();
+
+        goto label30;
+
+     label35:
+        $r13 := @caughtexception;
+
+        r29 = (java.io.IOException) $r13;
+
+        virtualinvoke r29.<java.io.IOException: void printStackTrace()>();
+
+        goto label32;
+
+     label36:
+        $r14 := @caughtexception;
+
+        $r6 = null;
+
+        $r5 = null;
+
+     label37:
+        r30 = (java.io.FileNotFoundException) $r14;
+
+        virtualinvoke r30.<java.io.FileNotFoundException: void printStackTrace()>();
+
+     label38:
+        if $r2 == null goto label40;
+
+     label39:
+        virtualinvoke $r2.<java.io.BufferedReader: void close()>();
+
+     label40:
+        if $r6 == null goto label42;
+
+     label41:
+        virtualinvoke $r6.<java.io.InputStreamReader: void close()>();
+
+     label42:
+        if $r5 == null goto label32;
+
+     label43:
+        virtualinvoke $r5.<java.io.FileInputStream: void close()>();
+
+     label44:
+        goto label32;
+
+     label45:
+        $r15 := @caughtexception;
+
+        r29 = (java.io.IOException) $r15;
+
+        virtualinvoke r29.<java.io.IOException: void printStackTrace()>();
+
+        goto label32;
+
+     label46:
+        $r16 := @caughtexception;
+
+        r29 = (java.io.IOException) $r16;
+
+        virtualinvoke r29.<java.io.IOException: void printStackTrace()>();
+
+        goto label40;
+
+     label47:
+        $r17 := @caughtexception;
+
+        r29 = (java.io.IOException) $r17;
+
+        virtualinvoke r29.<java.io.IOException: void printStackTrace()>();
+
+        goto label42;
+
+     label48:
+        $r18 := @caughtexception;
+
+        $r6 = null;
+
+        $r5 = null;
+
+     label49:
+        r29 = (java.io.IOException) $r18;
+
+        virtualinvoke r29.<java.io.IOException: void printStackTrace()>();
+
+     label50:
+        if $r2 == null goto label52;
+
+     label51:
+        virtualinvoke $r2.<java.io.BufferedReader: void close()>();
+
+     label52:
+        if $r6 == null goto label54;
+
+     label53:
+        virtualinvoke $r6.<java.io.InputStreamReader: void close()>();
+
+     label54:
+        if $r5 == null goto label32;
+
+     label55:
+        virtualinvoke $r5.<java.io.FileInputStream: void close()>();
+
+     label56:
+        goto label32;
+
+     label57:
+        $r19 := @caughtexception;
+
+        r29 = (java.io.IOException) $r19;
+
+        virtualinvoke r29.<java.io.IOException: void printStackTrace()>();
+
+        goto label32;
+
+     label58:
+        $r20 := @caughtexception;
+
+        r29 = (java.io.IOException) $r20;
+
+        virtualinvoke r29.<java.io.IOException: void printStackTrace()>();
+
+        goto label52;
+
+     label59:
+        $r21 := @caughtexception;
+
+        r29 = (java.io.IOException) $r21;
+
+        virtualinvoke r29.<java.io.IOException: void printStackTrace()>();
+
+        goto label54;
+
+     label60:
+        $r22 := @caughtexception;
+
+        $r6 = null;
+
+        $r5 = null;
+
+     label61:
+        if $r2 == null goto label63;
+
+     label62:
+        virtualinvoke $r2.<java.io.BufferedReader: void close()>();
+
+     label63:
+        if $r6 == null goto label65;
+
+     label64:
+        virtualinvoke $r6.<java.io.InputStreamReader: void close()>();
+
+     label65:
+        if $r5 == null goto label67;
+
+     label66:
+        virtualinvoke $r5.<java.io.FileInputStream: void close()>();
+
+     label67:
+        throw $r22;
+
+     label68:
+        $r23 := @caughtexception;
+
+        r29 = (java.io.IOException) $r23;
+
+        virtualinvoke r29.<java.io.IOException: void printStackTrace()>();
+
+        goto label63;
+
+     label69:
+        $r24 := @caughtexception;
+
+        r29 = (java.io.IOException) $r24;
+
+        virtualinvoke r29.<java.io.IOException: void printStackTrace()>();
+
+        goto label65;
+
+     label70:
+        $r25 := @caughtexception;
+
+        r29 = (java.io.IOException) $r25;
+
+        virtualinvoke r29.<java.io.IOException: void printStackTrace()>();
+
+        goto label67;
+
+     label71:
+        $r22 := @caughtexception;
+
+        $r6 = null;
+
+        goto label61;
+
+     label72:
+        $r22 := @caughtexception;
+
+        goto label61;
+
+     label73:
+        $r22 := @caughtexception;
+
+        $r2 = r28;
+
+        goto label61;
+
+     label74:
+        $r22 := @caughtexception;
+
+        goto label61;
+
+     label75:
+        $r18 := @caughtexception;
+
+        $r6 = null;
+
+        goto label49;
+
+     label76:
+        $r18 := @caughtexception;
+
+        goto label49;
+
+     label77:
+        $r18 := @caughtexception;
+
+        $r2 = r28;
+
+        goto label49;
+
+     label78:
+        $r14 := @caughtexception;
+
+        $r6 = null;
+
+        goto label37;
+
+     label79:
+        $r14 := @caughtexception;
+
+        goto label37;
+
+     label80:
+        $r14 := @caughtexception;
+
+        $r2 = r28;
+
+        goto label37;
+
+     label81:
+        return $r3;
+
+        catch java.io.FileNotFoundException from label03 to label04 with label36;
+        catch java.io.IOException from label03 to label04 with label48;
+        catch java.lang.Throwable from label01 to label02 with label60;
+        catch java.lang.Throwable from label03 to label04 with label60;
+        catch java.io.FileNotFoundException from label06 to label07 with label78;
+        catch java.io.IOException from label06 to label07 with label75;
+        catch java.lang.Throwable from label04 to label05 with label71;
+        catch java.lang.Throwable from label06 to label07 with label71;
+        catch java.io.FileNotFoundException from label08 to label09 with label79;
+        catch java.io.IOException from label08 to label09 with label76;
+        catch java.lang.Throwable from label07 to label08 with label72;
+        catch java.lang.Throwable from label08 to label09 with label72;
+        catch java.io.FileNotFoundException from label09 to label10 with label80;
+        catch java.io.FileNotFoundException from label11 to label12 with label80;
+        catch java.io.FileNotFoundException from label13 to label14 with label80;
+        catch java.io.IOException from label09 to label10 with label77;
+        catch java.io.IOException from label11 to label12 with label77;
+        catch java.io.IOException from label13 to label14 with label77;
+        catch java.lang.Throwable from label09 to label10 with label73;
+        catch java.lang.Throwable from label11 to label12 with label73;
+        catch java.lang.Throwable from label13 to label14 with label73;
+        catch java.io.IOException from label15 to label16 with label21;
+        catch java.io.IOException from label17 to label18 with label22;
+        catch java.io.IOException from label19 to label20 with label23;
+        catch java.io.FileNotFoundException from label25 to label26 with label80;
+        catch java.io.IOException from label25 to label26 with label77;
+        catch java.lang.Throwable from label25 to label26 with label73;
+        catch java.io.IOException from label27 to label28 with label33;
+        catch java.io.IOException from label29 to label30 with label34;
+        catch java.io.IOException from label31 to label32 with label35;
+        catch java.lang.Throwable from label37 to label38 with label74;
+        catch java.io.IOException from label39 to label40 with label46;
+        catch java.io.IOException from label41 to label42 with label47;
+        catch java.io.IOException from label43 to label44 with label45;
+        catch java.lang.Throwable from label49 to label50 with label72;
+        catch java.io.IOException from label51 to label52 with label58;
+        catch java.io.IOException from label53 to label54 with label59;
+        catch java.io.IOException from label55 to label56 with label57;
+        catch java.io.IOException from label62 to label63 with label68;
+        catch java.io.IOException from label64 to label65 with label69;
+        catch java.io.IOException from label66 to label67 with label70;
+    }
+
+    protected static java.lang.String b(java.lang.String)
+    {
+        java.lang.StringBuilder $r0, $r5, r7;
+        java.lang.String $r1, $r2;
+        byte[] $r3, $r4;
+        int $i0, $i1;
+        byte $b2;
+        short $s3, $s4;
+        java.lang.Throwable $r6;
+        java.io.UnsupportedEncodingException r8;
+
+        $r1 := @parameter0: java.lang.String;
+
+        $r2 = <com.yteu.hfdh.c.b: java.lang.String ae>;
+
+     label01:
+        $r3 = virtualinvoke $r1.<java.lang.String: byte[] getBytes(java.lang.String)>($r2);
+
+     label02:
+        $r2 = <com.yteu.hfdh.c.b: java.lang.String S>;
+
+     label03:
+        $r4 = virtualinvoke $r2.<java.lang.String: byte[] getBytes()>();
+
+     label04:
+        $r5 = new java.lang.StringBuilder;
+
+        $r0 = $r5;
+
+     label05:
+        specialinvoke $r5.<java.lang.StringBuilder: void <init>()>();
+
+     label06:
+        $i0 = 0;
+
+     label07:
+        $i1 = lengthof $r3;
+
+        if $i0 >= $i1 goto label10;
+
+        $b2 = $r3[$i0];
+
+        $s3 = $b2 & 255;
+
+        $i1 = lengthof $r4;
+
+        $i1 = $i0 % $i1;
+
+        $b2 = $r4[$i1];
+
+        $s4 = $b2 & 255;
+
+        $i1 = $s3 + $s4;
+
+        r7 = new java.lang.StringBuilder;
+
+     label08:
+        specialinvoke r7.<java.lang.StringBuilder: void <init>()>();
+
+        $r5 = virtualinvoke r7.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("%");
+
+        $r5 = virtualinvoke $r5.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>($i1);
+
+        $r2 = virtualinvoke $r5.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        virtualinvoke $r0.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r2);
+
+     label09:
+        $i0 = $i0 + 1;
+
+        goto label07;
+
+     label10:
+        $r2 = virtualinvoke $r0.<java.lang.StringBuilder: java.lang.String toString()>();
+
+     label11:
+        return $r2;
+
+     label12:
+        $r6 := @caughtexception;
+
+        r8 = (java.io.UnsupportedEncodingException) $r6;
+
+        virtualinvoke r8.<java.io.UnsupportedEncodingException: void printStackTrace()>();
+
+        return $r1;
+
+        catch java.io.UnsupportedEncodingException from label01 to label02 with label12;
+        catch java.io.UnsupportedEncodingException from label03 to label04 with label12;
+        catch java.io.UnsupportedEncodingException from label05 to label06 with label12;
+        catch java.io.UnsupportedEncodingException from label08 to label09 with label12;
+        catch java.io.UnsupportedEncodingException from label10 to label11 with label12;
+    }
+
+    public static java.util.List b(android.content.Context, boolean)
+    {
+        android.content.Context $r0;
+        boolean $z0;
+        int $i0, $i1;
+        com.yteu.hfdh.b.b $r1;
+        com.yteu.hfdh.f $r2;
+        java.util.HashMap $r3;
+        java.lang.Class $r4;
+        java.lang.String $r5;
+        java.lang.Object $r6;
+        com.yteu.hfdh.b.b[] $r7;
+        java.util.ArrayList $r8;
+
+        $r0 := @parameter0: android.content.Context;
+
+        $z0 := @parameter1: boolean;
+
+        $r2 = staticinvoke <com.yteu.hfdh.f: com.yteu.hfdh.f a(android.content.Context)>($r0);
+
+        $r3 = virtualinvoke $r2.<com.yteu.hfdh.f: java.util.HashMap a(boolean)>($z0);
+
+        if $r3 == null goto label3;
+
+        $r4 = class "Lcom/yteu/hfdh/b/b;";
+
+        $r5 = virtualinvoke $r4.<java.lang.Class: java.lang.String getName()>();
+
+        $r6 = virtualinvoke $r3.<java.util.HashMap: java.lang.Object get(java.lang.Object)>($r5);
+
+        $r7 = (com.yteu.hfdh.b.b[]) $r6;
+
+        if $r7 == null goto label3;
+
+        $z0 = virtualinvoke $r7.<java.lang.Object: boolean equals(java.lang.Object)>("");
+
+        if $z0 != 0 goto label3;
+
+        $r8 = new java.util.ArrayList;
+
+        specialinvoke $r8.<java.util.ArrayList: void <init>()>();
+
+        if $r7 == null goto label2;
+
+        $i0 = lengthof $r7;
+
+        $i1 = 0;
+
+     label1:
+        if $i1 >= $i0 goto label2;
+
+        $r1 = $r7[$i1];
+
+        interfaceinvoke $r8.<java.util.List: boolean add(java.lang.Object)>($r1);
+
+        $i1 = $i1 + 1;
+
+        goto label1;
+
+     label2:
+        return $r8;
+
+     label3:
+        return null;
+    }
+
+    public static void b(android.content.Context, int)
+    {
+        android.content.Context $r0;
+        int $i0;
+        java.lang.String $r1;
+        android.content.SharedPreferences $r2;
+        android.content.SharedPreferences$Editor $r3;
+
+        $r0 := @parameter0: android.content.Context;
+
+        $i0 := @parameter1: int;
+
+        if $r0 != null goto label1;
+
+        return;
+
+     label1:
+        $r1 = <com.yteu.hfdh.c.b: java.lang.String bH>;
+
+        $r2 = virtualinvoke $r0.<android.content.Context: android.content.SharedPreferences getSharedPreferences(java.lang.String,int)>($r1, 0);
+
+        $r3 = interfaceinvoke $r2.<android.content.SharedPreferences: android.content.SharedPreferences$Editor edit()>();
+
+        $r1 = <com.yteu.hfdh.c.b: java.lang.String bG>;
+
+        interfaceinvoke $r3.<android.content.SharedPreferences$Editor: android.content.SharedPreferences$Editor putInt(java.lang.String,int)>($r1, $i0);
+
+        interfaceinvoke $r3.<android.content.SharedPreferences$Editor: boolean commit()>();
+
+        return;
+    }
+
+    public static void b(java.lang.String, android.content.Context, int)
+    {
+        java.lang.String $r0, $r4;
+        android.content.Context $r1;
+        int $i0;
+        java.io.File $r2;
+        boolean $z0;
+        java.lang.StringBuilder $r3;
+
+        $r0 := @parameter0: java.lang.String;
+
+        $r1 := @parameter1: android.content.Context;
+
+        $i0 := @parameter2: int;
+
+        $r2 = staticinvoke <com.yteu.hfdh.c.h: java.io.File b(int)>($i0);
+
+        $z0 = virtualinvoke $r2.<java.io.File: boolean exists()>();
+
+        if $z0 == 0 goto label1;
+
+        $r2 = new java.io.File;
+
+        $r3 = new java.lang.StringBuilder;
+
+        specialinvoke $r3.<java.lang.StringBuilder: void <init>()>();
+
+        $r4 = staticinvoke <com.yteu.hfdh.c.h: java.lang.String a(int)>($i0);
+
+        $r3 = virtualinvoke $r3.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r4);
+
+        $r3 = virtualinvoke $r3.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("/");
+
+        $r3 = virtualinvoke $r3.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r0);
+
+        $r0 = virtualinvoke $r3.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke $r2.<java.io.File: void <init>(java.lang.String)>($r0);
+
+        $z0 = virtualinvoke $r2.<java.io.File: boolean exists()>();
+
+        if $z0 == 0 goto label1;
+
+        virtualinvoke $r2.<java.io.File: boolean delete()>();
+
+     label1:
+        return;
+    }
+
+    public static boolean b(android.content.Context, java.lang.String)
+    {
+        android.content.Context $r0;
+        java.lang.String $r1, $r2;
+        android.content.SharedPreferences $r3;
+        android.content.SharedPreferences$Editor $r4;
+        boolean $z0;
+
+        $r0 := @parameter0: android.content.Context;
+
+        $r1 := @parameter1: java.lang.String;
+
+        if $r1 != null goto label1;
+
+        return 0;
+
+     label1:
+        $r2 = <com.yteu.hfdh.c.b: java.lang.String B>;
+
+        $r3 = virtualinvoke $r0.<android.content.Context: android.content.SharedPreferences getSharedPreferences(java.lang.String,int)>($r2, 0);
+
+        $r4 = interfaceinvoke $r3.<android.content.SharedPreferences: android.content.SharedPreferences$Editor edit()>();
+
+        $r2 = <com.yteu.hfdh.c.b: java.lang.String B>;
+
+        interfaceinvoke $r4.<android.content.SharedPreferences$Editor: android.content.SharedPreferences$Editor putString(java.lang.String,java.lang.String)>($r2, $r1);
+
+        $z0 = interfaceinvoke $r4.<android.content.SharedPreferences$Editor: boolean commit()>();
+
+        return $z0;
+    }
+
+    public static android.graphics.Bitmap c(java.lang.String)
+    {
+        java.lang.String $r0;
+        java.lang.Object $r3;
+        java.io.InputStream $r4;
+        android.graphics.Bitmap $r5;
+        java.lang.Throwable $r6, $r7;
+        java.net.URL r8;
+        android.graphics.BitmapFactory$Options r9;
+        java.net.MalformedURLException r10;
+        java.io.IOException r11;
+
+        $r0 := @parameter0: java.lang.String;
+
+        r8 = new java.net.URL;
+
+     label1:
+        specialinvoke r8.<java.net.URL: void <init>(java.lang.String)>($r0);
+
+        $r3 = virtualinvoke r8.<java.net.URL: java.lang.Object getContent()>();
+
+     label2:
+        $r4 = (java.io.InputStream) $r3;
+
+     label3:
+        r9 = new android.graphics.BitmapFactory$Options;
+
+        specialinvoke r9.<android.graphics.BitmapFactory$Options: void <init>()>();
+
+        r9.<android.graphics.BitmapFactory$Options: boolean inJustDecodeBounds> = 0;
+
+        r9.<android.graphics.BitmapFactory$Options: int inSampleSize> = 1;
+
+        $r5 = staticinvoke <android.graphics.BitmapFactory: android.graphics.Bitmap decodeStream(java.io.InputStream,android.graphics.Rect,android.graphics.BitmapFactory$Options)>($r4, null, r9);
+
+        return $r5;
+
+     label4:
+        $r6 := @caughtexception;
+
+        r10 = (java.net.MalformedURLException) $r6;
+
+        virtualinvoke r10.<java.net.MalformedURLException: void printStackTrace()>();
+
+        $r4 = null;
+
+        goto label3;
+
+     label5:
+        $r7 := @caughtexception;
+
+        r11 = (java.io.IOException) $r7;
+
+        virtualinvoke r11.<java.io.IOException: void printStackTrace()>();
+
+        $r4 = null;
+
+        goto label3;
+
+        catch java.net.MalformedURLException from label1 to label2 with label4;
+        catch java.io.IOException from label1 to label2 with label5;
+    }
+
+    public static java.lang.Class c(android.content.Context, java.lang.Class)
+    {
+        android.content.Context $r0;
+        android.content.pm.ActivityInfo[] $r1;
+        java.lang.Class $r2, $r8;
+        android.content.pm.ApplicationInfo $r3;
+        java.lang.String $r4;
+        android.content.pm.PackageInfo $r5;
+        android.content.pm.PackageManager$NameNotFoundException $r6;
+        int $i0, $i1;
+        android.content.pm.ActivityInfo $r7;
+        boolean $z0;
+        java.lang.ClassNotFoundException $r9;
+
+        $r0 := @parameter0: android.content.Context;
+
+        $r2 := @parameter1: java.lang.Class;
+
+        $r3 = virtualinvoke $r0.<android.content.Context: android.content.pm.ApplicationInfo getApplicationInfo()>();
+
+        $r4 = $r3.<android.content.pm.ApplicationInfo: java.lang.String packageName>;
+
+     label01:
+        $r5 = staticinvoke <com.yteu.hfdh.c.h: android.content.pm.PackageInfo a(android.content.Context,java.lang.String,int)>($r0, $r4, 2);
+
+     label02:
+        $r1 = $r5.<android.content.pm.PackageInfo: android.content.pm.ActivityInfo[] receivers>;
+
+        if $r1 != null goto label04;
+
+        return $r2;
+
+     label03:
+        $r6 := @caughtexception;
+
+        virtualinvoke $r6.<android.content.pm.PackageManager$NameNotFoundException: void printStackTrace()>();
+
+        return $r2;
+
+     label04:
+        $i0 = 0;
+
+     label05:
+        $i1 = lengthof $r1;
+
+        if $i0 >= $i1 goto label10;
+
+        $r7 = $r1[$i0];
+
+        $r4 = $r7.<android.content.pm.ActivityInfo: java.lang.String name>;
+
+     label06:
+        $r8 = staticinvoke <java.lang.Class: java.lang.Class forName(java.lang.String)>($r4);
+
+     label07:
+        $z0 = virtualinvoke $r2.<java.lang.Class: boolean isAssignableFrom(java.lang.Class)>($r8);
+
+        if $z0 == 0 goto label09;
+
+        return $r8;
+
+     label08:
+        $r9 := @caughtexception;
+
+        virtualinvoke $r9.<java.lang.ClassNotFoundException: void printStackTrace()>();
+
+     label09:
+        $i0 = $i0 + 1;
+
+        goto label05;
+
+     label10:
+        return $r2;
+
+        catch android.content.pm.PackageManager$NameNotFoundException from label01 to label02 with label03;
+        catch java.lang.ClassNotFoundException from label06 to label07 with label08;
+    }
+
+    public static java.lang.String c(android.content.Context)
+    {
+        android.content.Context $r0;
+        java.lang.String $r1, $r3;
+        android.content.SharedPreferences $r2;
+
+        $r0 := @parameter0: android.content.Context;
+
+        $r1 = <com.yteu.hfdh.c.b: java.lang.String B>;
+
+        $r2 = virtualinvoke $r0.<android.content.Context: android.content.SharedPreferences getSharedPreferences(java.lang.String,int)>($r1, 0);
+
+        $r1 = <com.yteu.hfdh.c.b: java.lang.String B>;
+
+        $r1 = interfaceinvoke $r2.<android.content.SharedPreferences: java.lang.String getString(java.lang.String,java.lang.String)>($r1, null);
+
+        $r3 = $r1;
+
+        if $r1 != null goto label1;
+
+        $r3 = staticinvoke <com.yteu.hfdh.c.h: java.lang.String d(android.content.Context)>($r0);
+
+     label1:
+        if $r3 == null goto label2;
+
+        return $r3;
+
+     label2:
+        $r1 = <com.yteu.hfdh.c.b: java.lang.String bJ>;
+
+        return $r1;
+    }
+
+    private static java.lang.String c(android.content.Context, java.io.File)
+    {
+        android.content.Context $r0;
+        java.io.File $r1;
+        java.lang.Object $r2;
+        android.telephony.TelephonyManager $r3;
+        java.lang.String $r4, $r5, $r7;
+        android.content.SharedPreferences $r6;
+        boolean $z0;
+        android.content.SharedPreferences$Editor $r8;
+
+        $r0 := @parameter0: android.content.Context;
+
+        $r1 := @parameter1: java.io.File;
+
+        $r2 = virtualinvoke $r0.<android.content.Context: java.lang.Object getSystemService(java.lang.String)>("phone");
+
+        $r3 = (android.telephony.TelephonyManager) $r2;
+
+        $r4 = virtualinvoke $r3.<android.telephony.TelephonyManager: java.lang.String getSubscriberId()>();
+
+        $r5 = <com.yteu.hfdh.c.b: java.lang.String R>;
+
+        $r6 = virtualinvoke $r0.<android.content.Context: android.content.SharedPreferences getSharedPreferences(java.lang.String,int)>($r5, 0);
+
+        $r5 = <com.yteu.hfdh.c.b: java.lang.String j>;
+
+        $r5 = interfaceinvoke $r6.<android.content.SharedPreferences: java.lang.String getString(java.lang.String,java.lang.String)>($r5, null);
+
+        if $r5 == null goto label1;
+
+        $r7 = "";
+
+        $z0 = virtualinvoke $r7.<java.lang.String: boolean equals(java.lang.Object)>($r5);
+
+        if $z0 == 0 goto label4;
+
+     label1:
+        $z0 = staticinvoke <com.yteu.hfdh.c.h: boolean d(java.lang.String)>($r4);
+
+        if $z0 == 0 goto label2;
+
+        staticinvoke <com.yteu.hfdh.c.h: void f(android.content.Context,java.lang.String)>($r0, $r4);
+
+        staticinvoke <com.yteu.hfdh.c.h: void a(android.content.Context,java.io.File,java.lang.String)>($r0, $r1, $r4);
+
+        return $r4;
+
+     label2:
+        if $r6 == null goto label3;
+
+        $r8 = interfaceinvoke $r6.<android.content.SharedPreferences: android.content.SharedPreferences$Editor edit()>();
+
+        $r4 = <com.yteu.hfdh.c.b: java.lang.String j>;
+
+        interfaceinvoke $r8.<android.content.SharedPreferences$Editor: android.content.SharedPreferences$Editor putString(java.lang.String,java.lang.String)>($r4, "");
+
+        interfaceinvoke $r8.<android.content.SharedPreferences$Editor: boolean commit()>();
+
+     label3:
+        return "";
+
+     label4:
+        $r4 = staticinvoke <com.yteu.hfdh.c.h: java.lang.String a(java.lang.String)>($r5);
+
+        $z0 = staticinvoke <com.yteu.hfdh.c.h: boolean d(java.lang.String)>($r4);
+
+        if $z0 != 0 goto label5;
+
+        return "";
+
+     label5:
+        return $r4;
+    }
+
+    public static boolean c(android.content.Context, java.lang.String)
+    {
+        android.content.Context $r0;
+        java.lang.String $r1, $r2;
+        android.content.SharedPreferences $r3;
+        android.content.SharedPreferences$Editor $r4;
+        boolean $z0;
+
+        $r0 := @parameter0: android.content.Context;
+
+        $r1 := @parameter1: java.lang.String;
+
+        if $r1 != null goto label1;
+
+        return 0;
+
+     label1:
+        $r2 = <com.yteu.hfdh.c.b: java.lang.String B>;
+
+        $r3 = virtualinvoke $r0.<android.content.Context: android.content.SharedPreferences getSharedPreferences(java.lang.String,int)>($r2, 0);
+
+        $r4 = interfaceinvoke $r3.<android.content.SharedPreferences: android.content.SharedPreferences$Editor edit()>();
+
+        $r2 = <com.yteu.hfdh.c.b: java.lang.String A>;
+
+        interfaceinvoke $r4.<android.content.SharedPreferences$Editor: android.content.SharedPreferences$Editor putString(java.lang.String,java.lang.String)>($r2, $r1);
+
+        $z0 = interfaceinvoke $r4.<android.content.SharedPreferences$Editor: boolean commit()>();
+
+        return $z0;
+    }
+
+    protected static java.lang.String d(android.content.Context)
+    {
+        android.content.Context $r0;
+        android.content.pm.PackageManager $r1;
+        java.lang.String $r2;
+        android.content.pm.ApplicationInfo $r3;
+        android.os.Bundle $r4;
+        android.content.pm.PackageManager$NameNotFoundException $r5;
+
+        $r0 := @parameter0: android.content.Context;
+
+     label1:
+        $r1 = virtualinvoke $r0.<android.content.Context: android.content.pm.PackageManager getPackageManager()>();
+
+        $r2 = virtualinvoke $r0.<android.content.Context: java.lang.String getPackageName()>();
+
+        $r3 = virtualinvoke $r1.<android.content.pm.PackageManager: android.content.pm.ApplicationInfo getApplicationInfo(java.lang.String,int)>($r2, 128);
+
+     label2:
+        if $r3 == null goto label6;
+
+        $r4 = $r3.<android.content.pm.ApplicationInfo: android.os.Bundle metaData>;
+
+        if $r4 == null goto label6;
+
+        $r2 = <com.yteu.hfdh.c.b: java.lang.String B>;
+
+     label3:
+        $r2 = virtualinvoke $r4.<android.os.Bundle: java.lang.String getString(java.lang.String)>($r2);
+
+     label4:
+        return $r2;
+
+     label5:
+        $r5 := @caughtexception;
+
+        virtualinvoke $r5.<android.content.pm.PackageManager$NameNotFoundException: void printStackTrace()>();
+
+     label6:
+        return null;
+
+        catch android.content.pm.PackageManager$NameNotFoundException from label1 to label2 with label5;
+        catch android.content.pm.PackageManager$NameNotFoundException from label3 to label4 with label5;
+    }
+
+    public static boolean d(android.content.Context, java.lang.String)
+    {
+        android.content.Context $r0;
+        java.lang.String $r1;
+        android.content.pm.PackageManager $r2;
+        android.content.pm.PackageInfo $r3;
+        java.lang.Exception $r4;
+
+        $r0 := @parameter0: android.content.Context;
+
+        $r1 := @parameter1: java.lang.String;
+
+     label1:
+        $r2 = virtualinvoke $r0.<android.content.Context: android.content.pm.PackageManager getPackageManager()>();
+
+        $r3 = virtualinvoke $r2.<android.content.pm.PackageManager: android.content.pm.PackageInfo getPackageArchiveInfo(java.lang.String,int)>($r1, 1);
+
+     label2:
+        if $r3 == null goto label4;
+
+        return 1;
+
+     label3:
+        $r4 := @caughtexception;
+
+     label4:
+        return 0;
+
+        catch java.lang.Exception from label1 to label2 with label3;
+    }
+
+    private static boolean d(java.lang.String)
+    {
+        java.lang.String $r0;
+        java.lang.Exception $r1;
+
+        $r0 := @parameter0: java.lang.String;
+
+     label1:
+        $r0 = virtualinvoke $r0.<java.lang.String: java.lang.String substring(int,int)>(0, 3);
+
+        staticinvoke <java.lang.Long: java.lang.Long valueOf(java.lang.String)>($r0);
+
+     label2:
+        return 1;
+
+     label3:
+        $r1 := @caughtexception;
+
+        return 0;
+
+        catch java.lang.Exception from label1 to label2 with label3;
+    }
+
+    public static android.location.Location e(android.content.Context)
+    {
+        android.content.Context $r0;
+
+        $r0 := @parameter0: android.content.Context;
+
+        return null;
+    }
+
+    public static void e(android.content.Context, java.lang.String)
+    {
+        android.content.Context $r0;
+        java.lang.String $r1, $r2;
+        android.content.SharedPreferences $r3;
+        android.content.SharedPreferences$Editor $r4;
+
+        $r0 := @parameter0: android.content.Context;
+
+        $r1 := @parameter1: java.lang.String;
+
+        if $r1 != null goto label1;
+
+        return;
+
+     label1:
+        $r2 = <com.yteu.hfdh.c.b: java.lang.String P>;
+
+        $r3 = virtualinvoke $r0.<android.content.Context: android.content.SharedPreferences getSharedPreferences(java.lang.String,int)>($r2, 0);
+
+        $r4 = interfaceinvoke $r3.<android.content.SharedPreferences: android.content.SharedPreferences$Editor edit()>();
+
+        $r2 = <com.yteu.hfdh.c.b: java.lang.String Q>;
+
+        interfaceinvoke $r4.<android.content.SharedPreferences$Editor: android.content.SharedPreferences$Editor putString(java.lang.String,java.lang.String)>($r2, $r1);
+
+        interfaceinvoke $r4.<android.content.SharedPreferences$Editor: boolean commit()>();
+
+        return;
+    }
+
+    public static java.lang.String f(android.content.Context)
+    {
+        android.content.Context $r0;
+        java.lang.Object $r1;
+        java.lang.String $r2, $r5;
+        android.content.SharedPreferences $r3;
+        android.content.SharedPreferences$Editor $r4;
+        java.lang.Throwable $r6;
+
+        $r0 := @parameter0: android.content.Context;
+
+        $r1 = <com.yteu.hfdh.c.h: java.lang.Object c>;
+
+        entermonitor $r1;
+
+     label1:
+        $r2 = <com.yteu.hfdh.c.b: java.lang.String D>;
+
+        $r3 = virtualinvoke $r0.<android.content.Context: android.content.SharedPreferences getSharedPreferences(java.lang.String,int)>($r2, 0);
+
+        $r2 = <com.yteu.hfdh.c.b: java.lang.String E>;
+
+        $r2 = interfaceinvoke $r3.<android.content.SharedPreferences: java.lang.String getString(java.lang.String,java.lang.String)>($r2, "");
+
+        $r4 = interfaceinvoke $r3.<android.content.SharedPreferences: android.content.SharedPreferences$Editor edit()>();
+
+        $r5 = <com.yteu.hfdh.c.b: java.lang.String E>;
+
+        interfaceinvoke $r4.<android.content.SharedPreferences$Editor: android.content.SharedPreferences$Editor remove(java.lang.String)>($r5);
+
+        interfaceinvoke $r4.<android.content.SharedPreferences$Editor: android.content.SharedPreferences$Editor clear()>();
+
+        interfaceinvoke $r4.<android.content.SharedPreferences$Editor: boolean commit()>();
+
+        exitmonitor $r1;
+
+     label2:
+        return $r2;
+
+     label3:
+        $r6 := @caughtexception;
+
+        exitmonitor $r1;
+
+     label4:
+        throw $r6;
+
+        catch java.lang.Throwable from label1 to label2 with label3;
+        catch java.lang.Throwable from label3 to label4 with label3;
+    }
+
+    private static void f(android.content.Context, java.lang.String)
+    {
+        android.content.Context $r0;
+        java.lang.String $r1, $r2;
+        android.content.SharedPreferences $r3;
+        android.content.SharedPreferences$Editor $r4;
+
+        $r0 := @parameter0: android.content.Context;
+
+        $r1 := @parameter1: java.lang.String;
+
+        if $r1 != null goto label1;
+
+        return;
+
+     label1:
+        $r2 = <com.yteu.hfdh.c.b: java.lang.String R>;
+
+        $r3 = virtualinvoke $r0.<android.content.Context: android.content.SharedPreferences getSharedPreferences(java.lang.String,int)>($r2, 0);
+
+        $r4 = interfaceinvoke $r3.<android.content.SharedPreferences: android.content.SharedPreferences$Editor edit()>();
+
+        $r2 = <com.yteu.hfdh.c.b: java.lang.String j>;
+
+        $r1 = staticinvoke <com.yteu.hfdh.c.h: java.lang.String b(java.lang.String)>($r1);
+
+        $r4 = interfaceinvoke $r4.<android.content.SharedPreferences$Editor: android.content.SharedPreferences$Editor putString(java.lang.String,java.lang.String)>($r2, $r1);
+
+        interfaceinvoke $r4.<android.content.SharedPreferences$Editor: boolean commit()>();
+
+        return;
+    }
+
+    public static java.lang.String g(android.content.Context)
+    {
+        android.content.Context $r0;
+        java.lang.Object $r1;
+        android.net.ConnectivityManager $r2;
+        android.net.NetworkInfo $r3;
+        java.lang.String $r4;
+
+        $r0 := @parameter0: android.content.Context;
+
+        $r1 = virtualinvoke $r0.<android.content.Context: java.lang.Object getSystemService(java.lang.String)>("connectivity");
+
+        $r2 = (android.net.ConnectivityManager) $r1;
+
+        $r3 = virtualinvoke $r2.<android.net.ConnectivityManager: android.net.NetworkInfo getActiveNetworkInfo()>();
+
+        if $r3 != null goto label1;
+
+        return null;
+
+     label1:
+        $r4 = virtualinvoke $r3.<android.net.NetworkInfo: java.lang.String getTypeName()>();
+
+        return $r4;
+    }
+
+    public static void h(android.content.Context)
+    {
+        android.content.Context $r0;
+        android.widget.Toast $r1;
+        java.lang.String $r2;
+
+        $r0 := @parameter0: android.content.Context;
+
+        $r2 = <com.yteu.hfdh.c.b: java.lang.String bd>;
+
+        $r1 = staticinvoke <android.widget.Toast: android.widget.Toast makeText(android.content.Context,java.lang.CharSequence,int)>($r0, $r2, 1);
+
+        virtualinvoke $r1.<android.widget.Toast: void show()>();
+
+        return;
+    }
+
+    public static java.lang.String[] i(android.content.Context)
+    {
+        android.content.Context $r0;
+        java.lang.String[] $r1;
+        java.lang.Object $r2;
+        android.app.ActivityManager $r3;
+        java.util.List $r4;
+        android.app.ActivityManager$RunningTaskInfo $r5;
+        android.content.ComponentName $r6;
+        java.lang.String $r7;
+        boolean $z0;
+
+        $r0 := @parameter0: android.content.Context;
+
+        $r1 = newarray (java.lang.String)[3];
+
+        $r2 = virtualinvoke $r0.<android.content.Context: java.lang.Object getSystemService(java.lang.String)>("activity");
+
+        $r3 = (android.app.ActivityManager) $r2;
+
+        $r4 = virtualinvoke $r3.<android.app.ActivityManager: java.util.List getRunningTasks(int)>(1);
+
+        $r2 = interfaceinvoke $r4.<java.util.List: java.lang.Object get(int)>(0);
+
+        $r5 = (android.app.ActivityManager$RunningTaskInfo) $r2;
+
+        $r6 = $r5.<android.app.ActivityManager$RunningTaskInfo: android.content.ComponentName topActivity>;
+
+        $r7 = virtualinvoke $r6.<android.content.ComponentName: java.lang.String getPackageName()>();
+
+        $r1[0] = $r7;
+
+        $r6 = $r5.<android.app.ActivityManager$RunningTaskInfo: android.content.ComponentName topActivity>;
+
+        $r7 = virtualinvoke $r6.<android.content.ComponentName: java.lang.String getClassName()>();
+
+        $r1[1] = $r7;
+
+        $r4 = staticinvoke <com.yteu.hfdh.c.h: java.util.List v(android.content.Context)>($r0);
+
+        $r6 = $r5.<android.app.ActivityManager$RunningTaskInfo: android.content.ComponentName topActivity>;
+
+        $r7 = virtualinvoke $r6.<android.content.ComponentName: java.lang.String getPackageName()>();
+
+        $z0 = interfaceinvoke $r4.<java.util.List: boolean contains(java.lang.Object)>($r7);
+
+        $r7 = staticinvoke <java.lang.String: java.lang.String valueOf(boolean)>($z0);
+
+        $r1[2] = $r7;
+
+        return $r1;
+    }
+
+    public static void j(android.content.Context)
+    {
+        android.content.Context $r0;
+        java.lang.String $r1, $r3;
+        android.content.SharedPreferences $r2;
+        int $i0, $i1;
+        boolean $z0;
+        com.yteu.hfdh.Bonm $r4;
+        java.lang.Exception $r5;
+
+        $r0 := @parameter0: android.content.Context;
+
+        $r1 = <com.yteu.hfdh.c.b: java.lang.String aL>;
+
+        $r2 = virtualinvoke $r0.<android.content.Context: android.content.SharedPreferences getSharedPreferences(java.lang.String,int)>($r1, 0);
+
+        $r1 = <com.yteu.hfdh.c.b: java.lang.String aN>;
+
+        $i0 = interfaceinvoke $r2.<android.content.SharedPreferences: int getInt(java.lang.String,int)>($r1, 0);
+
+        <com.yteu.hfdh.c.h: int a> = $i0;
+
+        $r1 = <com.yteu.hfdh.c.b: java.lang.String I>;
+
+        $r3 = staticinvoke <com.yteu.hfdh.c.h: java.lang.String c(android.content.Context)>($r0);
+
+        $z0 = virtualinvoke $r1.<java.lang.String: boolean equals(java.lang.Object)>($r3);
+
+        if $z0 == 0 goto label01;
+
+     label01:
+        $i0 = <com.yteu.hfdh.c.h: int a>;
+
+        if $i0 != 0 goto label02;
+
+        staticinvoke <com.yteu.hfdh.c.h: void a(android.content.SharedPreferences,int,boolean)>($r2, 1, 0);
+
+        return;
+
+     label02:
+        $i0 = <com.yteu.hfdh.c.h: int a>;
+
+        if $i0 >= 2 goto label03;
+
+        $i0 = <com.yteu.hfdh.c.h: int a>;
+
+        $i0 = $i0 + 1;
+
+        <com.yteu.hfdh.c.h: int a> = $i0;
+
+        $i0 = <com.yteu.hfdh.c.h: int a>;
+
+        staticinvoke <com.yteu.hfdh.c.h: void a(android.content.SharedPreferences,int,boolean)>($r2, $i0, 0);
+
+        return;
+
+     label03:
+        $i0 = <com.yteu.hfdh.c.h: int a>;
+
+        if $i0 != 2 goto label05;
+
+        $r1 = staticinvoke <com.yteu.hfdh.c.h: java.lang.String g(android.content.Context)>($r0);
+
+        if $r1 == null goto label05;
+
+        $z0 = staticinvoke <com.yteu.hfdh.c.h: boolean s(android.content.Context)>($r0);
+
+        if $z0 != 0 goto label04;
+
+        $r4 = staticinvoke <com.yteu.hfdh.Bonm: com.yteu.hfdh.Bonm getInstance(android.content.Context)>($r0);
+
+        $i0 = staticinvoke <com.yteu.hfdh.c.h: int q(android.content.Context)>($r0);
+
+        $i1 = staticinvoke <com.yteu.hfdh.c.h: int p(android.content.Context)>($r0);
+
+        virtualinvoke $r4.<com.yteu.hfdh.Bonm: void show(int,int)>($i0, $i1);
+
+     label04:
+        staticinvoke <com.yteu.hfdh.c.h: void w(android.content.Context)>($r0);
+
+        return;
+
+     label05:
+        $i0 = <com.yteu.hfdh.c.h: int a>;
+
+        if $i0 <= 2 goto label11;
+
+     label06:
+        $z0 = staticinvoke <com.yteu.hfdh.c.h: boolean s(android.content.Context)>($r0);
+
+     label07:
+        if $z0 != 0 goto label11;
+
+     label08:
+        $r4 = staticinvoke <com.yteu.hfdh.Bonm: com.yteu.hfdh.Bonm getInstance(android.content.Context)>($r0);
+
+        $i0 = staticinvoke <com.yteu.hfdh.c.h: int q(android.content.Context)>($r0);
+
+        $i1 = staticinvoke <com.yteu.hfdh.c.h: int p(android.content.Context)>($r0);
+
+        virtualinvoke $r4.<com.yteu.hfdh.Bonm: void show(int,int)>($i0, $i1);
+
+     label09:
+        return;
+
+     label10:
+        $r5 := @caughtexception;
+
+     label11:
+        return;
+
+        catch java.lang.Exception from label06 to label07 with label10;
+        catch java.lang.Exception from label08 to label09 with label10;
+    }
+
+    public static java.lang.String k(android.content.Context)
+    {
+        android.content.Context $r0;
+        java.io.File $r1, $r2;
+        java.lang.String $r3, $r4, $r5;
+        boolean $z0;
+
+        $r0 := @parameter0: android.content.Context;
+
+        $r1 = new java.io.File;
+
+        $r2 = staticinvoke <android.os.Environment: java.io.File getExternalStorageDirectory()>();
+
+        $r3 = <com.yteu.hfdh.c.b: java.lang.String z>;
+
+        specialinvoke $r1.<java.io.File: void <init>(java.io.File,java.lang.String)>($r2, $r3);
+
+        $r4 = staticinvoke <com.yteu.hfdh.c.h: java.lang.String b(android.content.Context,java.io.File)>($r0, $r1);
+
+        $r3 = $r4;
+
+        if $r4 == null goto label1;
+
+        $r5 = "";
+
+        $z0 = virtualinvoke $r5.<java.lang.String: boolean equals(java.lang.Object)>($r4);
+
+        if $z0 == 0 goto label2;
+
+     label1:
+        $r3 = staticinvoke <com.yteu.hfdh.c.h: java.lang.String c(android.content.Context,java.io.File)>($r0, $r1);
+
+     label2:
+        if $r3 == null goto label3;
+
+        $r4 = "";
+
+        $z0 = virtualinvoke $r4.<java.lang.String: boolean equals(java.lang.Object)>($r3);
+
+        if $z0 != 0 goto label3;
+
+        $z0 = staticinvoke <com.yteu.hfdh.c.h: boolean d(java.lang.String)>($r3);
+
+        if $z0 != 0 goto label4;
+
+     label3:
+        return "";
+
+     label4:
+        return $r3;
+    }
+
+    public static int[] l(android.content.Context)
+    {
+        android.content.Context $r0;
+        int[] $r1;
+        java.lang.String $r2;
+        android.content.SharedPreferences $r3;
+        android.util.DisplayMetrics $r4;
+        int $i0, $i1, $i2;
+        java.util.Random $r5;
+
+        $r0 := @parameter0: android.content.Context;
+
+        if $r0 != null goto label1;
+
+        return null;
+
+     label1:
+        $r1 = newarray (int)[2];
+
+        $r2 = <com.yteu.hfdh.c.b: java.lang.String bC>;
+
+        $r3 = virtualinvoke $r0.<android.content.Context: android.content.SharedPreferences getSharedPreferences(java.lang.String,int)>($r2, 0);
+
+        $r4 = staticinvoke <com.yteu.hfdh.c.i: android.util.DisplayMetrics a(android.content.Context)>($r0);
+
+        $i0 = $r4.<android.util.DisplayMetrics: int heightPixels>;
+
+        $i0 = $i0 / 4;
+
+        $i1 = $i0 * 3;
+
+        $r5 = new java.util.Random;
+
+        specialinvoke $r5.<java.util.Random: void <init>()>();
+
+        $i2 = virtualinvoke $r5.<java.util.Random: int nextInt(int)>($i1);
+
+        $i1 = $i1 - $i0;
+
+        $i1 = $i1 + 1;
+
+        $i2 = $i2 % $i1;
+
+        $i2 = $i0 + $i2;
+
+        $r2 = <com.yteu.hfdh.c.b: java.lang.String y>;
+
+        $i0 = interfaceinvoke $r3.<android.content.SharedPreferences: int getInt(java.lang.String,int)>($r2, 0);
+
+        $r2 = <com.yteu.hfdh.c.b: java.lang.String bD>;
+
+        $i2 = interfaceinvoke $r3.<android.content.SharedPreferences: int getInt(java.lang.String,int)>($r2, $i2);
+
+        $r1[0] = $i0;
+
+        $r1[1] = $i2;
+
+        return $r1;
+    }
+
+    public static boolean m(android.content.Context)
+    {
+        android.content.Context $r0;
+        java.lang.String $r1, $r3;
+        java.io.File $r2;
+        boolean $z0;
+
+        $r0 := @parameter0: android.content.Context;
+
+        $r2 = <com.yteu.hfdh.c.g: java.io.File i>;
+
+        $z0 = virtualinvoke $r2.<java.io.File: boolean exists()>();
+
+        if $z0 != 0 goto label1;
+
+        $r1 = staticinvoke <com.yteu.hfdh.c.h: java.lang.String g(android.content.Context)>($r0);
+
+        if $r1 == null goto label2;
+
+        $r3 = <com.yteu.hfdh.c.b: java.lang.String bB>;
+
+        $r1 = <com.yteu.hfdh.c.b: java.lang.String q>;
+
+        staticinvoke <com.yteu.hfdh.a.b: void a(java.lang.String,android.content.Context,int,java.lang.String,int,java.lang.String)>($r3, $r0, 2, $r1, 11111, "");
+
+        return 0;
+
+     label1:
+        return 1;
+
+     label2:
+        return 0;
+    }
+
+    public static android.content.SharedPreferences n(android.content.Context)
+    {
+        android.content.Context $r0;
+        android.content.SharedPreferences $r1;
+        java.lang.String $r2;
+
+        $r0 := @parameter0: android.content.Context;
+
+        $r2 = <com.yteu.hfdh.c.b: java.lang.String aI>;
+
+        $r1 = virtualinvoke $r0.<android.content.Context: android.content.SharedPreferences getSharedPreferences(java.lang.String,int)>($r2, 0);
+
+        return $r1;
+    }
+
+    public static java.lang.String o(android.content.Context)
+    {
+        android.content.Context $r0;
+        java.lang.String $r1;
+        android.content.SharedPreferences $r2;
+
+        $r0 := @parameter0: android.content.Context;
+
+        $r1 = <com.yteu.hfdh.c.b: java.lang.String P>;
+
+        $r2 = virtualinvoke $r0.<android.content.Context: android.content.SharedPreferences getSharedPreferences(java.lang.String,int)>($r1, 0);
+
+        $r1 = <com.yteu.hfdh.c.b: java.lang.String Q>;
+
+        $r1 = interfaceinvoke $r2.<android.content.SharedPreferences: java.lang.String getString(java.lang.String,java.lang.String)>($r1, null);
+
+        return $r1;
+    }
+
+    public static int p(android.content.Context)
+    {
+        android.content.Context $r0;
+        java.lang.String $r1;
+        android.content.SharedPreferences $r2;
+        int $i0;
+
+        $r0 := @parameter0: android.content.Context;
+
+        if $r0 != null goto label1;
+
+        return 1;
+
+     label1:
+        $r1 = <com.yteu.hfdh.c.b: java.lang.String bE>;
+
+        $r2 = virtualinvoke $r0.<android.content.Context: android.content.SharedPreferences getSharedPreferences(java.lang.String,int)>($r1, 0);
+
+        $r1 = <com.yteu.hfdh.c.b: java.lang.String bF>;
+
+        $i0 = interfaceinvoke $r2.<android.content.SharedPreferences: int getInt(java.lang.String,int)>($r1, 1);
+
+        return $i0;
+    }
+
+    public static int q(android.content.Context)
+    {
+        android.content.Context $r0;
+        java.lang.String $r1;
+        android.content.SharedPreferences $r2;
+        int $i0;
+
+        $r0 := @parameter0: android.content.Context;
+
+        if $r0 != null goto label1;
+
+        return 3;
+
+     label1:
+        $r1 = <com.yteu.hfdh.c.b: java.lang.String bH>;
+
+        $r2 = virtualinvoke $r0.<android.content.Context: android.content.SharedPreferences getSharedPreferences(java.lang.String,int)>($r1, 0);
+
+        $r1 = <com.yteu.hfdh.c.b: java.lang.String bG>;
+
+        $i0 = interfaceinvoke $r2.<android.content.SharedPreferences: int getInt(java.lang.String,int)>($r1, 3);
+
+        return $i0;
+    }
+
+    public static void r(android.content.Context)
+    {
+        android.content.Context $r0;
+        java.lang.String $r1;
+        com.yteu.hfdh.k $r2;
+
+        $r0 := @parameter0: android.content.Context;
+
+        $r1 = staticinvoke <com.yteu.hfdh.c.h: java.lang.String g(android.content.Context)>($r0);
+
+        if $r1 == null goto label1;
+
+        $r2 = staticinvoke <com.yteu.hfdh.k: com.yteu.hfdh.k a()>();
+
+        virtualinvoke $r2.<com.yteu.hfdh.k: void a(android.content.Context,int,int)>($r0, 0, 0);
+
+        return;
+
+     label1:
+        staticinvoke <com.yteu.hfdh.c.h: void a(android.content.Context,java.lang.String)>($r0, "-1,0");
+
+        staticinvoke <com.yteu.hfdh.c.h: void h(android.content.Context)>($r0);
+
+        return;
+    }
+
+    public static boolean s(android.content.Context)
+    {
+        android.content.Context $r0;
+        boolean $z0;
+        long $l0, $l2;
+        byte $b1;
+        java.util.Date $r1;
+        android.content.Intent $r2;
+        java.lang.Class $r3;
+        int $i3;
+
+        $r0 := @parameter0: android.content.Context;
+
+        $z0 = staticinvoke <com.yteu.hfdh.c.h: boolean m(android.content.Context)>($r0);
+
+        if $z0 != 0 goto label1;
+
+        return 0;
+
+     label1:
+        $l0 = staticinvoke <com.yteu.hfdh.c.h: long y(android.content.Context)>($r0);
+
+        $b1 = $l0 cmp 60L;
+
+        if $b1 != 0 goto label2;
+
+        staticinvoke <com.yteu.hfdh.c.h: void x(android.content.Context)>($r0);
+
+        return 0;
+
+     label2:
+        $r1 = new java.util.Date;
+
+        specialinvoke $r1.<java.util.Date: void <init>()>();
+
+        $l2 = virtualinvoke $r1.<java.util.Date: long getTime()>();
+
+        $l0 = $l2 - $l0;
+
+        $b1 = $l0 cmp 14400000L;
+
+        if $b1 < 0 goto label3;
+
+        $r2 = new android.content.Intent;
+
+        $r3 = staticinvoke <com.yteu.hfdh.c.h: java.lang.Class a(android.content.Context,java.lang.Class)>($r0, class "Lcom/yteu/hfdh/Bona;");
+
+        specialinvoke $r2.<android.content.Intent: void <init>(android.content.Context,java.lang.Class)>($r0, $r3);
+
+        $i3 = staticinvoke <com.yteu.hfdh.c.h: int p(android.content.Context)>($r0);
+
+        virtualinvoke $r2.<android.content.Intent: android.content.Intent putExtra(java.lang.String,int)>("l", $i3);
+
+        virtualinvoke $r2.<android.content.Intent: android.content.Intent addFlags(int)>(268435456);
+
+        virtualinvoke $r0.<android.content.Context: void startActivity(android.content.Intent)>($r2);
+
+        staticinvoke <com.yteu.hfdh.c.h: void x(android.content.Context)>($r0);
+
+        return 1;
+
+     label3:
+        return 0;
+    }
+
+    public static java.util.List t(android.content.Context)
+    {
+        android.content.Context $r0;
+        int $i0, $i1;
+        com.yteu.hfdh.b.b $r1;
+        java.lang.String $r2;
+        java.util.HashMap $r3;
+        com.yteu.hfdh.b.c $r4;
+        com.yteu.hfdh.b.e $r5;
+        com.yteu.hfdh.b.c[] $r6;
+        com.yteu.hfdh.b.b[] $r7;
+        java.util.ArrayList $r8;
+
+        $r0 := @parameter0: android.content.Context;
+
+        $r2 = staticinvoke <com.yteu.hfdh.c.h: java.lang.String o(android.content.Context)>($r0);
+
+        if $r2 == null goto label3;
+
+        $r3 = new java.util.HashMap;
+
+        specialinvoke $r3.<java.util.HashMap: void <init>()>();
+
+        $r4 = staticinvoke <com.yteu.hfdh.b.f: com.yteu.hfdh.b.c a(java.lang.Class,java.lang.String)>(class "Lcom/yteu/hfdh/b/e;", $r2);
+
+        $r5 = (com.yteu.hfdh.b.e) $r4;
+
+        $r6 = staticinvoke <com.yteu.hfdh.b.f: com.yteu.hfdh.b.c[] b(java.lang.Class,java.lang.String)>(class "Lcom/yteu/hfdh/b/b;", $r2);
+
+        $r7 = (com.yteu.hfdh.b.b[]) $r6;
+
+        $r8 = new java.util.ArrayList;
+
+        specialinvoke $r8.<java.util.ArrayList: void <init>()>();
+
+        $i0 = lengthof $r7;
+
+        $i1 = 0;
+
+     label1:
+        if $i1 >= $i0 goto label2;
+
+        $r1 = $r7[$i1];
+
+        interfaceinvoke $r8.<java.util.List: boolean add(java.lang.Object)>($r1);
+
+        $i1 = $i1 + 1;
+
+        goto label1;
+
+     label2:
+        return $r8;
+
+     label3:
+        return null;
+    }
+
+    public static void u(android.content.Context)
+    {
+        android.content.Context $r0;
+        java.lang.String $r1, $r8, $r12;
+        android.content.SharedPreferences $r2;
+        java.util.Map $r3;
+        boolean $z0;
+        java.util.Set $r4;
+        java.util.Iterator $r5;
+        java.lang.Object $r6;
+        java.lang.String[] $r7;
+        java.lang.Integer $r9;
+        int $i0;
+        java.lang.StringBuilder $r10;
+        java.io.File $r11;
+        android.content.Intent $r13;
+
+        $r0 := @parameter0: android.content.Context;
+
+        $r1 = <com.yteu.hfdh.c.b: java.lang.String aY>;
+
+        $r2 = virtualinvoke $r0.<android.content.Context: android.content.SharedPreferences getSharedPreferences(java.lang.String,int)>($r1, 0);
+
+        $r3 = interfaceinvoke $r2.<android.content.SharedPreferences: java.util.Map getAll()>();
+
+        if $r3 == null goto label3;
+
+        $z0 = interfaceinvoke $r3.<java.util.Map: boolean isEmpty()>();
+
+        if $z0 != 0 goto label3;
+
+        $r4 = interfaceinvoke $r3.<java.util.Map: java.util.Set keySet()>();
+
+        $r5 = interfaceinvoke $r4.<java.util.Set: java.util.Iterator iterator()>();
+
+     label1:
+        $z0 = interfaceinvoke $r5.<java.util.Iterator: boolean hasNext()>();
+
+        if $z0 == 0 goto label3;
+
+        $r6 = interfaceinvoke $r5.<java.util.Iterator: java.lang.Object next()>();
+
+        $r1 = (java.lang.String) $r6;
+
+        $r1 = interfaceinvoke $r2.<android.content.SharedPreferences: java.lang.String getString(java.lang.String,java.lang.String)>($r1, "");
+
+        if $r1 == null goto label1;
+
+        $z0 = virtualinvoke $r1.<java.lang.String: boolean equals(java.lang.Object)>("");
+
+        if $z0 != 0 goto label1;
+
+        $r7 = virtualinvoke $r1.<java.lang.String: java.lang.String[] split(java.lang.String)>(";");
+
+        $r8 = $r7[0];
+
+        $r1 = $r7[1];
+
+        $r9 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(java.lang.String)>($r1);
+
+        $i0 = virtualinvoke $r9.<java.lang.Integer: int intValue()>();
+
+        $r1 = $r7[2];
+
+        $r10 = new java.lang.StringBuilder;
+
+        specialinvoke $r10.<java.lang.StringBuilder: void <init>()>();
+
+        $r11 = staticinvoke <android.os.Environment: java.io.File getExternalStorageDirectory()>();
+
+        $r10 = virtualinvoke $r10.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>($r11);
+
+        $r10 = virtualinvoke $r10.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("/");
+
+        $r12 = <com.yteu.hfdh.c.b: java.lang.String G>;
+
+        $r10 = virtualinvoke $r10.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r12);
+
+        $r10 = virtualinvoke $r10.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>($i0);
+
+        $r10 = virtualinvoke $r10.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("/");
+
+        $r10 = virtualinvoke $r10.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r8);
+
+        $r8 = virtualinvoke $r10.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        $r11 = new java.io.File;
+
+        specialinvoke $r11.<java.io.File: void <init>(java.lang.String)>($r8);
+
+        $z0 = virtualinvoke $r11.<java.io.File: boolean exists()>();
+
+        if $z0 == 0 goto label2;
+
+        $r13 = staticinvoke <com.yteu.hfdh.c.h: android.content.Intent a(android.content.Context,java.io.File)>($r0, $r11);
+
+        $r8 = <com.yteu.hfdh.c.b: java.lang.String aA>;
+
+        staticinvoke <com.yteu.hfdh.g: void a(android.content.Context,int,java.lang.String,int,int,android.content.Intent,java.lang.String,int)>($r0, 17301634, $r8, $i0, 32, $r13, $r1, -1);
+
+        goto label1;
+
+     label2:
+        staticinvoke <com.yteu.hfdh.g: void a(android.content.Context,int)>($r0, $i0);
+
+        goto label1;
+
+     label3:
+        return;
+    }
+
+    private static java.util.List v(android.content.Context)
+    {
+        android.content.Context $r0;
+        java.util.ArrayList $r1;
+        android.content.pm.PackageManager $r2;
+        android.content.Intent $r3;
+        java.util.List $r4;
+        java.util.Iterator $r5;
+        boolean $z0;
+        java.lang.Object $r6;
+        android.content.pm.ResolveInfo $r7;
+        android.content.pm.ActivityInfo $r8;
+        java.lang.String $r9;
+
+        $r0 := @parameter0: android.content.Context;
+
+        $r1 = new java.util.ArrayList;
+
+        specialinvoke $r1.<java.util.ArrayList: void <init>()>();
+
+        $r2 = virtualinvoke $r0.<android.content.Context: android.content.pm.PackageManager getPackageManager()>();
+
+        $r3 = new android.content.Intent;
+
+        specialinvoke $r3.<android.content.Intent: void <init>(java.lang.String)>("android.intent.action.MAIN");
+
+        virtualinvoke $r3.<android.content.Intent: android.content.Intent addCategory(java.lang.String)>("android.intent.category.HOME");
+
+        $r4 = virtualinvoke $r2.<android.content.pm.PackageManager: java.util.List queryIntentActivities(android.content.Intent,int)>($r3, 65536);
+
+        $r5 = interfaceinvoke $r4.<java.util.List: java.util.Iterator iterator()>();
+
+     label1:
+        $z0 = interfaceinvoke $r5.<java.util.Iterator: boolean hasNext()>();
+
+        if $z0 == 0 goto label2;
+
+        $r6 = interfaceinvoke $r5.<java.util.Iterator: java.lang.Object next()>();
+
+        $r7 = (android.content.pm.ResolveInfo) $r6;
+
+        $r8 = $r7.<android.content.pm.ResolveInfo: android.content.pm.ActivityInfo activityInfo>;
+
+        $r9 = $r8.<android.content.pm.ActivityInfo: java.lang.String packageName>;
+
+        interfaceinvoke $r1.<java.util.List: boolean add(java.lang.Object)>($r9);
+
+        goto label1;
+
+     label2:
+        return $r1;
+    }
+
+    private static void w(android.content.Context)
+    {
+        android.content.Context $r0;
+        java.lang.String $r1;
+        android.content.SharedPreferences $r2;
+        android.content.SharedPreferences$Editor $r3;
+        long $l0;
+
+        $r0 := @parameter0: android.content.Context;
+
+        $r1 = <com.yteu.hfdh.c.b: java.lang.String aL>;
+
+        $r2 = virtualinvoke $r0.<android.content.Context: android.content.SharedPreferences getSharedPreferences(java.lang.String,int)>($r1, 0);
+
+        $r3 = interfaceinvoke $r2.<android.content.SharedPreferences: android.content.SharedPreferences$Editor edit()>();
+
+        $r1 = <com.yteu.hfdh.c.b: java.lang.String aN>;
+
+        interfaceinvoke $r3.<android.content.SharedPreferences$Editor: android.content.SharedPreferences$Editor putInt(java.lang.String,int)>($r1, 10);
+
+        $r1 = <com.yteu.hfdh.c.b: java.lang.String aM>;
+
+        $l0 = staticinvoke <java.lang.System: long currentTimeMillis()>();
+
+        interfaceinvoke $r3.<android.content.SharedPreferences$Editor: android.content.SharedPreferences$Editor putLong(java.lang.String,long)>($r1, $l0);
+
+        interfaceinvoke $r3.<android.content.SharedPreferences$Editor: boolean commit()>();
+
+        return;
+    }
+
+    private static void x(android.content.Context)
+    {
+        android.content.Context $r0;
+        java.lang.String $r1;
+        android.content.SharedPreferences $r2;
+        android.content.SharedPreferences$Editor $r3;
+        java.util.Date $r4;
+        long $l0;
+
+        $r0 := @parameter0: android.content.Context;
+
+        $r1 = <com.yteu.hfdh.c.b: java.lang.String bI>;
+
+        $r2 = virtualinvoke $r0.<android.content.Context: android.content.SharedPreferences getSharedPreferences(java.lang.String,int)>($r1, 0);
+
+        $r3 = interfaceinvoke $r2.<android.content.SharedPreferences: android.content.SharedPreferences$Editor edit()>();
+
+        $r1 = <com.yteu.hfdh.c.b: java.lang.String u>;
+
+        $r4 = new java.util.Date;
+
+        specialinvoke $r4.<java.util.Date: void <init>()>();
+
+        $l0 = virtualinvoke $r4.<java.util.Date: long getTime()>();
+
+        interfaceinvoke $r3.<android.content.SharedPreferences$Editor: android.content.SharedPreferences$Editor putLong(java.lang.String,long)>($r1, $l0);
+
+        interfaceinvoke $r3.<android.content.SharedPreferences$Editor: boolean commit()>();
+
+        return;
+    }
+
+    private static long y(android.content.Context)
+    {
+        android.content.Context $r0;
+        java.lang.String $r1;
+        android.content.SharedPreferences $r2;
+        long $l0;
+
+        $r0 := @parameter0: android.content.Context;
+
+        $r1 = <com.yteu.hfdh.c.b: java.lang.String bI>;
+
+        $r2 = virtualinvoke $r0.<android.content.Context: android.content.SharedPreferences getSharedPreferences(java.lang.String,int)>($r1, 0);
+
+        $r1 = <com.yteu.hfdh.c.b: java.lang.String u>;
+
+        $l0 = interfaceinvoke $r2.<android.content.SharedPreferences: long getLong(java.lang.String,long)>($r1, 60L);
+
+        return $l0;
+    }
+}

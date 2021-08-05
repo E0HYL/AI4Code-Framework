@@ -1,0 +1,436 @@
+public final class cbz.jMF.tsK.z.cd extends java.lang.Object
+{
+    private static cbz.jMF.tsK.z.cd a;
+    private android.content.Context b;
+    private byte[][] c;
+    private java.lang.String[] d;
+
+    static void <clinit>()
+    {
+        <cbz.jMF.tsK.z.cd: cbz.jMF.tsK.z.cd a> = null;
+
+        return;
+    }
+
+    private void <init>(android.content.Context)
+    {
+        cbz.jMF.tsK.z.cd $r0;
+        android.content.Context $r1;
+
+        $r0 := @this: cbz.jMF.tsK.z.cd;
+
+        $r1 := @parameter0: android.content.Context;
+
+        specialinvoke $r0.<java.lang.Object: void <init>()>();
+
+        $r0.<cbz.jMF.tsK.z.cd: android.content.Context b> = $r1;
+
+        specialinvoke $r0.<cbz.jMF.tsK.z.cd: void a()>();
+
+        return;
+    }
+
+    protected static cbz.jMF.tsK.z.cd a(android.content.Context)
+    {
+        android.content.Context $r0;
+        cbz.jMF.tsK.z.cd $r1;
+
+        $r0 := @parameter0: android.content.Context;
+
+        $r1 = <cbz.jMF.tsK.z.cd: cbz.jMF.tsK.z.cd a>;
+
+        if $r1 != null goto label1;
+
+        $r1 = new cbz.jMF.tsK.z.cd;
+
+        specialinvoke $r1.<cbz.jMF.tsK.z.cd: void <init>(android.content.Context)>($r0);
+
+        <cbz.jMF.tsK.z.cd: cbz.jMF.tsK.z.cd a> = $r1;
+
+     label1:
+        $r1 = <cbz.jMF.tsK.z.cd: cbz.jMF.tsK.z.cd a>;
+
+        return $r1;
+    }
+
+    private void a()
+    {
+        cbz.jMF.tsK.z.cd $r0;
+        java.io.BufferedReader $r1, r24;
+        int $i0, $i2, $i4;
+        android.content.Context $r2;
+        android.content.res.AssetManager $r3;
+        java.io.DataInputStream $r4, r22;
+        java.io.InputStream $r5;
+        short $s1;
+        byte[][] $r6;
+        long $l3;
+        byte[] $r7;
+        java.lang.String $r10, $r13;
+        java.lang.String[] $r11, $r12;
+        java.lang.Throwable $r14, $r15, $r16, $r17, $r18, $r19, $r20, $r21;
+        java.io.StringReader r23;
+        java.io.IOException r25;
+
+        $r0 := @this: cbz.jMF.tsK.z.cd;
+
+        $r1 = null;
+
+        $i0 = 0;
+
+        $r2 = $r0.<cbz.jMF.tsK.z.cd: android.content.Context b>;
+
+        $r3 = virtualinvoke $r2.<android.content.Context: android.content.res.AssetManager getAssets()>();
+
+     label01:
+        r22 = new java.io.DataInputStream;
+
+     label02:
+        $r4 = r22;
+
+     label03:
+        $r5 = virtualinvoke $r3.<android.content.res.AssetManager: java.io.InputStream open(java.lang.String)>("vwmj.dat");
+
+        specialinvoke r22.<java.io.DataInputStream: void <init>(java.io.InputStream)>($r5);
+
+     label04:
+        $s1 = virtualinvoke r22.<java.io.DataInputStream: short readShort()>();
+
+     label05:
+        $r6 = newarray (byte[])[$s1];
+
+        $r0.<cbz.jMF.tsK.z.cd: byte[][] c> = $r6;
+
+     label06:
+        $i2 = 0;
+
+     label07:
+        if $i2 >= $s1 goto label12;
+
+     label08:
+        virtualinvoke r22.<java.io.DataInputStream: byte readByte()>();
+
+        $l3 = virtualinvoke r22.<java.io.DataInputStream: long readLong()>();
+
+     label09:
+        $r6 = $r0.<cbz.jMF.tsK.z.cd: byte[][] c>;
+
+        $i4 = (int) $l3;
+
+        $r7 = newarray (byte)[$i4];
+
+        $r6[$i2] = $r7;
+
+        $r6 = $r0.<cbz.jMF.tsK.z.cd: byte[][] c>;
+
+        $r7 = $r6[$i2];
+
+     label10:
+        virtualinvoke r22.<java.io.DataInputStream: int read(byte[])>($r7);
+
+     label11:
+        $i2 = $i2 + 1;
+
+        goto label07;
+
+     label12:
+        r24 = new java.io.BufferedReader;
+
+     label13:
+        r23 = new java.io.StringReader;
+
+     label14:
+        $r13 = new java.lang.String;
+
+     label15:
+        $r6 = $r0.<cbz.jMF.tsK.z.cd: byte[][] c>;
+
+        $r7 = $r6[50];
+
+     label16:
+        specialinvoke $r13.<java.lang.String: void <init>(byte[])>($r7);
+
+        specialinvoke r23.<java.io.StringReader: void <init>(java.lang.String)>($r13);
+
+        specialinvoke r24.<java.io.BufferedReader: void <init>(java.io.Reader)>(r23);
+
+     label17:
+        $r10 = virtualinvoke r24.<java.io.BufferedReader: java.lang.String readLine()>();
+
+        $i2 = staticinvoke <java.lang.Integer: int parseInt(java.lang.String)>($r10);
+
+     label18:
+        $r11 = newarray (java.lang.String)[$i2];
+
+        $r0.<cbz.jMF.tsK.z.cd: java.lang.String[] d> = $r11;
+
+     label19:
+        if $i0 >= $i2 goto label28;
+
+     label20:
+        $r11 = $r0.<cbz.jMF.tsK.z.cd: java.lang.String[] d>;
+
+     label21:
+        $r10 = virtualinvoke r24.<java.io.BufferedReader: java.lang.String readLine()>();
+
+     label22:
+        $r11[$i0] = $r10;
+
+        $r11 = $r0.<cbz.jMF.tsK.z.cd: java.lang.String[] d>;
+
+        $r12 = $r0.<cbz.jMF.tsK.z.cd: java.lang.String[] d>;
+
+        $r10 = $r12[$i0];
+
+        $r12 = $r0.<cbz.jMF.tsK.z.cd: java.lang.String[] d>;
+
+        $r13 = $r12[$i0];
+
+     label23:
+        $i4 = virtualinvoke $r13.<java.lang.String: int lastIndexOf(int)>(35);
+
+     label24:
+        $i4 = $i4 + 1;
+
+     label25:
+        $r10 = virtualinvoke $r10.<java.lang.String: java.lang.String substring(int)>($i4);
+
+     label26:
+        $r11[$i0] = $r10;
+
+     label27:
+        $i0 = $i0 + 1;
+
+        goto label19;
+
+     label28:
+        virtualinvoke r22.<java.io.DataInputStream: void close()>();
+
+     label29:
+        virtualinvoke r24.<java.io.BufferedReader: void close()>();
+
+     label30:
+        return;
+
+     label31:
+        $r14 := @caughtexception;
+
+        r25 = (java.io.IOException) $r14;
+
+        virtualinvoke r25.<java.io.IOException: void printStackTrace()>();
+
+        goto label29;
+
+     label32:
+        $r15 := @caughtexception;
+
+        r25 = (java.io.IOException) $r15;
+
+        virtualinvoke r25.<java.io.IOException: void printStackTrace()>();
+
+        return;
+
+     label33:
+        $r16 := @caughtexception;
+
+        $r4 = null;
+
+     label34:
+        r25 = (java.io.IOException) $r16;
+
+        virtualinvoke r25.<java.io.IOException: void printStackTrace()>();
+
+     label35:
+        if $r4 == null goto label37;
+
+     label36:
+        virtualinvoke $r4.<java.io.DataInputStream: void close()>();
+
+     label37:
+        if $r1 == null goto label55;
+
+     label38:
+        virtualinvoke $r1.<java.io.BufferedReader: void close()>();
+
+     label39:
+        return;
+
+     label40:
+        $r17 := @caughtexception;
+
+        r25 = (java.io.IOException) $r17;
+
+        virtualinvoke r25.<java.io.IOException: void printStackTrace()>();
+
+        return;
+
+     label41:
+        $r18 := @caughtexception;
+
+        r25 = (java.io.IOException) $r18;
+
+        virtualinvoke r25.<java.io.IOException: void printStackTrace()>();
+
+        goto label37;
+
+     label42:
+        $r19 := @caughtexception;
+
+        $r4 = null;
+
+     label43:
+        if $r4 == null goto label45;
+
+     label44:
+        virtualinvoke $r4.<java.io.DataInputStream: void close()>();
+
+     label45:
+        if $r1 == null goto label47;
+
+     label46:
+        virtualinvoke $r1.<java.io.BufferedReader: void close()>();
+
+     label47:
+        throw $r19;
+
+     label48:
+        $r20 := @caughtexception;
+
+        r25 = (java.io.IOException) $r20;
+
+        virtualinvoke r25.<java.io.IOException: void printStackTrace()>();
+
+        goto label45;
+
+     label49:
+        $r21 := @caughtexception;
+
+        r25 = (java.io.IOException) $r21;
+
+        virtualinvoke r25.<java.io.IOException: void printStackTrace()>();
+
+        goto label47;
+
+     label50:
+        $r19 := @caughtexception;
+
+        goto label43;
+
+     label51:
+        $r19 := @caughtexception;
+
+        $r1 = r24;
+
+        goto label43;
+
+     label52:
+        $r19 := @caughtexception;
+
+        goto label43;
+
+     label53:
+        $r16 := @caughtexception;
+
+        goto label34;
+
+     label54:
+        $r16 := @caughtexception;
+
+        $r1 = r24;
+
+        goto label34;
+
+     label55:
+        return;
+
+        catch java.io.IOException from label03 to label04 with label33;
+        catch java.lang.Throwable from label01 to label02 with label42;
+        catch java.lang.Throwable from label03 to label04 with label42;
+        catch java.io.IOException from label04 to label05 with label53;
+        catch java.io.IOException from label08 to label09 with label53;
+        catch java.io.IOException from label10 to label11 with label53;
+        catch java.io.IOException from label16 to label17 with label53;
+        catch java.lang.Throwable from label04 to label06 with label50;
+        catch java.lang.Throwable from label08 to label11 with label50;
+        catch java.lang.Throwable from label12 to label13 with label50;
+        catch java.lang.Throwable from label13 to label14 with label50;
+        catch java.lang.Throwable from label14 to label15 with label50;
+        catch java.lang.Throwable from label15 to label17 with label50;
+        catch java.io.IOException from label17 to label18 with label54;
+        catch java.io.IOException from label21 to label22 with label54;
+        catch java.io.IOException from label23 to label24 with label54;
+        catch java.io.IOException from label25 to label26 with label54;
+        catch java.lang.Throwable from label17 to label19 with label51;
+        catch java.lang.Throwable from label20 to label24 with label51;
+        catch java.lang.Throwable from label25 to label27 with label51;
+        catch java.io.IOException from label28 to label29 with label31;
+        catch java.io.IOException from label29 to label30 with label32;
+        catch java.lang.Throwable from label34 to label35 with label52;
+        catch java.io.IOException from label36 to label37 with label41;
+        catch java.io.IOException from label38 to label39 with label40;
+        catch java.io.IOException from label44 to label45 with label48;
+        catch java.io.IOException from label46 to label47 with label49;
+    }
+
+    protected final java.lang.String a(int, int)
+    {
+        cbz.jMF.tsK.z.cd $r0;
+        int $i0, $i1;
+        java.lang.String $r1, $r3;
+        java.lang.String[] $r2;
+
+        $r0 := @this: cbz.jMF.tsK.z.cd;
+
+        $i0 := @parameter0: int;
+
+        $i1 := @parameter1: int;
+
+        $r2 = $r0.<cbz.jMF.tsK.z.cd: java.lang.String[] d>;
+
+        $r1 = $r2[$i0];
+
+        $r2 = $r0.<cbz.jMF.tsK.z.cd: java.lang.String[] d>;
+
+        $r3 = $r2[$i1];
+
+        $r1 = virtualinvoke $r1.<java.lang.String: java.lang.String concat(java.lang.String)>($r3);
+
+        return $r1;
+    }
+
+    protected final byte[] a(int)
+    {
+        cbz.jMF.tsK.z.cd $r0;
+        int $i0;
+        byte[][] $r1;
+        byte[] $r2;
+
+        $r0 := @this: cbz.jMF.tsK.z.cd;
+
+        $i0 := @parameter0: int;
+
+        $r1 = $r0.<cbz.jMF.tsK.z.cd: byte[][] c>;
+
+        $r2 = $r1[$i0];
+
+        return $r2;
+    }
+
+    protected final java.lang.String b(int)
+    {
+        cbz.jMF.tsK.z.cd $r0;
+        int $i0;
+        java.lang.String[] $r1;
+        java.lang.String $r2;
+
+        $r0 := @this: cbz.jMF.tsK.z.cd;
+
+        $i0 := @parameter0: int;
+
+        $r1 = $r0.<cbz.jMF.tsK.z.cd: java.lang.String[] d>;
+
+        $r2 = $r1[$i0];
+
+        return $r2;
+    }
+}

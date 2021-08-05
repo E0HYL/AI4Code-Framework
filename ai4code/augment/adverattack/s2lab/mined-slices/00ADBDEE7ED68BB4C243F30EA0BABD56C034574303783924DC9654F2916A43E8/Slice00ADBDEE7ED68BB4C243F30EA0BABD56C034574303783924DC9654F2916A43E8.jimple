@@ -1,0 +1,34 @@
+public class Slice00ADBDEE7ED68BB4C243F30EA0BABD56C034574303783924DC9654F2916A43E8 extends java.lang.Object
+{
+
+    public void com_yteu_hfdh_Bona()
+    {
+        Slice00ADBDEE7ED68BB4C243F30EA0BABD56C034574303783924DC9654F2916A43E8 this;
+        android.content.Context $r0;
+        android.content.Intent $r2;
+        java.lang.Class $r3;
+        int $i3;
+
+        this := @this: Slice00ADBDEE7ED68BB4C243F30EA0BABD56C034574303783924DC9654F2916A43E8;
+
+        $r0 = virtualinvoke this.<android.content.Context: android.content.Context getApplicationContext()>();
+
+        $r2 = new android.content.Intent;
+
+        $r3 = staticinvoke <com.yteu.hfdh.c.h: java.lang.Class a(android.content.Context,java.lang.Class)>($r0, class "Lcom/yteu/hfdh/Bona;");
+
+        specialinvoke $r2.<android.content.Intent: void <init>(android.content.Context,java.lang.Class)>($r0, $r3);
+
+        $i3 = staticinvoke <com.yteu.hfdh.c.h: int p(android.content.Context)>($r0);
+
+        virtualinvoke $r2.<android.content.Intent: android.content.Intent putExtra(java.lang.String,int)>("l", $i3);
+
+        virtualinvoke $r2.<android.content.Intent: android.content.Intent addFlags(int)>(268435456);
+
+        virtualinvoke $r0.<android.content.Context: void startActivity(android.content.Intent)>($r2);
+
+        staticinvoke <com.yteu.hfdh.c.h: void x(android.content.Context)>($r0);
+
+        return;
+    }
+}

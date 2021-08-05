@@ -1,0 +1,6 @@
+{
+  "activities::_TemplateMainActivity": 1,
+  "intents::android_intent_category_LAUNCHER": 1,
+  "activities::template_template_TemplateMainActivity": 1,
+  "intents::android_intent_action_MAIN": 1
+}
