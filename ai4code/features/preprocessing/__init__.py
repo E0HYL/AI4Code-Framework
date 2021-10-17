@@ -7,5 +7,5 @@ Contact: heyilinge0@gmail.com
 Description: 
 FilePath: \AI4Code-Framework\ai4code\features\preprocessing\__init__.py
 '''
-from .preprocessing import Analyzer
+from .preprocess import Analyzer
 from .android import APKAnalyzer

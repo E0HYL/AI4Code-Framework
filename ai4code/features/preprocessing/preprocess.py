@@ -8,9 +8,13 @@ Description:
 FilePath: \AI4Code-Framework\ai4code\features\preprocessing\preprocess.py
 '''
 
-class Analyzer(self):
-    def __init__(self, data, code_level, feature_level, analysis_obj):
-        pass
+import networkx as nx
+
+class Analyzer(object):
+    def __init__(self, filepath):
+        self.filepath = filepath
+        self.features = None
+        # print("Analyzer initialized:", self.filepath)
 
     def disassemble(self, binary):
         """
@@ -47,3 +51,9 @@ class Analyzer(self):
         tokens (opcode / operand) list of a method / basic block
         """
         return NotImplementedError
+
+    def get_features(self):
+        if self.features is None:
+            raise NotImplementedError
+        else:
+            return self.features

@@ -8,24 +8,32 @@ Description:
 FilePath: \AI4Code-Framework\ai4code\features\preprocessing\android.py
 """
 
-from ai4code.features.preprocessing import Analyzer
+
 from androguard.misc import AnalyzeAPK
 from androguard.core.bytecodes.dvm_types import Kind, Operand
 from androguard.decompiler.dad.decompile import DvMethod
+from androguard.decompiler.dad.graph import construct
+from androguard.core.bytecodes.apk import APK
 import networkx as nx
 import hashlib
 from collections import defaultdict
+from ai4code.features.preprocessing import Analyzer
+from ai4code.features.preprocessing.androguard_literadar import get_tpl_pkgs
 
 
-def APKAnalyzer(Analyzer):
-    def __init__(self, apkpath):
+class APKAnalyzer(Analyzer):
+    def __init__(self, apkpath, ana_obj=None):
         """
         `a` an APK object: all information about the APK, like package name, permissions, the AndroidManifest.xml or its resources.
         `d` an array of DalvikVMFormat object: the DEX file found inside the APK file, get classes, methods or strings from the DEX file
         `dx` an Analysis object: support multiple DEX files, also call graphs and crossreferences (XREFs) for each method, class, field and string
         """
-        
-        self.a, self.d, self.dx = AnalyzeAPK(apkpath)
+
+        super(APKAnalyzer, self).__init__(apkpath)
+        if ana_obj is None:
+            self.a, self.d, self.dx = AnalyzeAPK(apkpath)
+        else:
+            self.a, self.d, self.dx = ana_obj
 
     def get_call_graph(self):
         """ Get call graph of the APK
@@ -44,7 +52,7 @@ def APKAnalyzer(Analyzer):
         """        
         
         mxs = defaultdict(list) # default: 0
-        for method in dx.get_methods():
+        for method in self.dx.get_methods():
             if method.is_android_api():
                 mxs["androapi"].append(method)
             elif method.is_external():
@@ -65,19 +73,22 @@ def APKAnalyzer(Analyzer):
             list: type of each bytecode # opcode: -1, see operand type in `instruction_format()`
         """        
 
-        assert method.is_external() == False
+        assert mx.is_external() == False
         m = mx.get_method()
         bytecode_seq = []
         types = []
         for ins in m.get_instructions():
-            opecode, operands = instruction_format(ins)
+            opcode, operands = instruction_format(ins)
             types.append(-1)
             bytecode_seq.append(opcode)
             if operand:
                 types.extend([i[0] for i in operands])
                 bytecode_seq.extend([i[1] for i in operands])
 
-        return bytecode_seq, types
+        if operand:
+            return bytecode_seq, types
+        else:
+            return bytecode_seq
 
     def get_method_cfg(self, mx):   
         """Go through all basic blocks of a method and create the CFG (rewrite `androguard.core.bytecodes.method2dot`)
@@ -99,7 +110,7 @@ def APKAnalyzer(Analyzer):
             defaultdict: general information of the method (name, reg, param, return) # default to empty string ''
         """
 
-        assert method.is_external() == False
+        assert mx.is_external() == False
         method = mx.get_method()
         CFG = nx.MultiDiGraph()
         edge_types = {
@@ -199,6 +210,20 @@ def APKAnalyzer(Analyzer):
 
         return CFG, method_info
 
+    def get_method_cfg_primary(self, mx):
+        """Returns the primary CFG in Androguard
+
+        Args:
+            mx (androguard.core.analysis.analysis.MethodAnalysis)
+
+        Returns:
+            Graph: https://github.com/androguard/androguard/blob/8d091cbb309c0c50bf239f805cc1e0931b8dcddc/androguard/decompiler/dad/graph.py#L28
+        """
+
+        dvm_instance = DvMethod(mx)
+        graph = construct(dvm_instance.start_block, dvm_instance.var_to_name, dvm_instance.exceptions)
+        return graph
+
     def get_method_ast(self, mx):
         """ Abstract syntax trees (AST) of a method
 
@@ -224,6 +249,59 @@ def APKAnalyzer(Analyzer):
         """        
 
         return list(self.dx.get_permissions(self.a.get_effective_target_sdk_version()))
+
+    def get_declared_permissions(self):
+        """ Get permissions declared in the Manifest
+
+        Returns:
+            set of the permissions
+        """
+        return self.a.get_permissions()
+
+    def get_xml_components(self, key): # 'service', 'receiver', 'provider', 'hardware', 'intent-filter'
+        """ Get components from the Manifest
+        
+        Args:
+            key: type of the component
+
+        Returns: 
+            list of component names
+        """
+
+        apk_xml = APK(self.filepath)
+        if key == 'activity':
+            return apk_xml.get_activities()
+        elif key == 'service':
+            return apk_xml.get_services()
+        elif key == 'receiver':
+            return apk_xml.get_receivers()
+        elif key == 'provider':
+            return apk_xml.get_providers()
+        elif key == 'hardware': # indicated by 'uses-feature', e.g., ['android.hardware.touchscreen', 'android.hardware.touchscreen.multitouch', 'android.hardware.touchscreen.multitouch.distinct']
+            return apk_xml.get_features()
+        elif key == 'intent-filter':
+            return apk_xml # need futher analysis
+        else:
+            raise ValueError("Unknown xml component: %s" % key)
+
+    def get_all_intent_filters(self):
+        """ Traverse all 'activity', 'service', 'receiver' to get their intent-filters
+        
+        Returns:
+            list of intent-filters
+        """
+        
+        filters = []
+        parser = self.get_xml_components(key='intent-filter')
+
+        for itemtype in ['activity', 'service', 'receiver']:
+            for component_name in self.get_xml_components(key=itemtype):
+                filter_action = parser.get_intent_filters(itemtype, component_name)['action']
+                filters += filter_action
+        return filters
+
+    def get_tpl_pkgs(self):
+        return get_tpl_pkgs(d=self.d)
 
 
 def instruction_format(instruction):
