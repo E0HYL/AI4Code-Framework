@@ -5,7 +5,7 @@
  - Model Evaluation
  - Decision Explanation
  
-Since I move to other research topics, this repo may not be matained anymore and I made it public in order to facilitate future work.
+Since I move to other research topics, this repo may not be maintained anymore and I made it public in order to facilitate future work.
 ## Implemented Feature Extractor (Android)
 - Drebin
 > Arp, Daniel, et al. "Drebin: Effective and explainable detection of android malware in your pocket." Ndss. Vol. 14. 2014.
